@@ -26,7 +26,7 @@
       name="gz::sim::systems::UserCommands">
     </plugin>
 
-    <gui fullscreen='false'>
+    <!-- <gui fullscreen='false'>
       <plugin name='3D View' filename='GzScene3D'>
         <ignition-gui>
           <title>3D View</title>
@@ -109,7 +109,7 @@
         <topic>rgbd_camera/depth_image</topic>
         <topic_picker>true</topic_picker>
       </plugin>
-    </gui>
+    </gui> -->
     <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
       <pose frame=''>0 0 10 0 -0 0</pose>
@@ -1523,7 +1523,7 @@
         <gravity>1</gravity>
         <enable_wind>0</enable_wind>
       </link>
-      <pose>9.7 -4 0 0 -0 1.57</pose>
+      <pose>10.3 -3.5 0 0 -0 1.57</pose>
     </model>
     <model name='jersey_barrier_8'>
       <static>1</static>
@@ -1670,7 +1670,7 @@
         <gravity>1</gravity>
         <enable_wind>0</enable_wind>
       </link>
-      <pose>9.7 3 0 0 -0 1.57</pose>
+      <pose>10.3 2.5 0 0 -0 1.57</pose>
     </model>
     <model name='jersey_barrier_9'>
       <static>1</static>
@@ -2258,7 +2258,7 @@
         <gravity>1</gravity>
         <enable_wind>0</enable_wind>
       </link>
-      <pose>9.7 -8 0 0 -0 1.57</pose>
+      <pose>10.5 -8 0 0 -0 1.57</pose>
     </model>
     <model name='jersey_barrier_13'>
       <static>1</static>
@@ -2405,7 +2405,7 @@
         <gravity>1</gravity>
         <enable_wind>0</enable_wind>
       </link>
-      <pose>9.7 7 0 0 -0 1.57</pose>
+      <pose>10.3 7 0 0 -0 1.57</pose>
     </model>
     <model name='jersey_barrier_14'>
       <static>1</static>
