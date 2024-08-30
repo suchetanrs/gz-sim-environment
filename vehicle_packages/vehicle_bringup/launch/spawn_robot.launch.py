@@ -106,12 +106,22 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         arguments=[robot_ns + 'depth_camera'],
         output='screen'
     )
+
+    key_teleop_cmd = Node(
+        package="teleop_twist_keyboard",
+        executable="teleop_twist_keyboard",
+        namespace=robot_ns,
+        parameters=[{'speed': '0.4'}],
+        prefix=["xterm -e"],
+        remappings=[('cmd_vel', 'cmd_vel_nav')],
+    )
     
     return [
         spawn_robot,
         robot_state_publisher,
         topic_bridge,
         image_bridge_rgb,
+        key_teleop_cmd,
         bridge
     ]
 
