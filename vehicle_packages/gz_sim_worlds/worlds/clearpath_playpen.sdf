@@ -26,7 +26,7 @@
       name="gz::sim::systems::UserCommands">
     </plugin>
 
-    <!-- <gui fullscreen='false'>
+    <gui fullscreen='false'>
       <plugin name='3D View' filename='GzScene3D'>
         <ignition-gui>
           <title>3D View</title>
@@ -109,7 +109,7 @@
         <topic>rgbd_camera/depth_image</topic>
         <topic_picker>true</topic_picker>
       </plugin>
-    </gui> -->
+    </gui>
     <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
       <pose frame=''>0 0 10 0 -0 0</pose>
