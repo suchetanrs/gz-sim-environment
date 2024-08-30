@@ -1,0 +1,4 @@
+root_dir/
+.vscode/
+!root_dir/shell_scripts
+vehicle_packages

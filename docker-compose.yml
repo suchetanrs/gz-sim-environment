@@ -1,0 +1,36 @@
+version: "3"
+services:
+  vehicle_simulator_gz_sim:
+    image: gazebo-vehicle-ros2-gpu-harmonic:humble
+    container_name: vehicle_simulator_gz_sim
+    volumes:
+      #full dev
+      - /dev:/dev:rw
+      #full media
+      - /media:/media:rw
+      #Time
+      - /etc/timezone:/etc/timezone:rw
+      - /etc/localtime:/etc/localtime:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      #ros-workspaces
+      - ./root_dir/:/root/:rw
+      - ./vehicle_packages:/root/ros2_ws/src/vehicle_packages/:rw
+      # - ../.ros/:/root/.ros
+    privileged: true
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    network_mode: host
+    ipc: host
+    stdin_open: true
+    tty: true
+    environment:
+      - DISPLAY
+      - TERM
+      - QT_X11_NO_MITSHM=1
+    entrypoint: /bin/bash
