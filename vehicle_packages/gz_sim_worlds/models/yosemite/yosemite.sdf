@@ -25,22 +25,22 @@
           <heightmap>
             <texture>
               <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>50</size>
             </texture>
 	    <texture>
 	      <diffuse>file://media/materials/textures/terrain_detail.jpg</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>75</size>
             </texture>
             <texture>
 	      <diffuse>model://yosemite/materials/textures/texture_forest.png</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>100</size>
             </texture>
             <texture>
               <diffuse>model://yosemite/materials/textures/texture_mountains.png</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>50</size>
             </texture>
             <blend>

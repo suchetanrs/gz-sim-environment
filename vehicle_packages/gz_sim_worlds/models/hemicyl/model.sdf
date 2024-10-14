@@ -25,12 +25,12 @@
           <heightmap>
             <texture>
 	            <diffuse>file://hemicyl/materials/textures/grass_dry.png</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>1000</size>
             </texture>
 	          <texture>
 	            <diffuse>file://hemicyl/materials/textures/texture_rock.png</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>200</size>
             </texture>
             <blend>

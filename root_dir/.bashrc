@@ -107,6 +107,7 @@ alias kk='kill -9 %1; kill -9 %1; kill -9 %1'
 source /opt/ros/humble/setup.bash
 export ROS_DOMAIN_ID=55
 export RCUTILS_COLORIZED_OUTPUT=1
+export ROS_LOCALHOST_ONLY=1
 cd
 sros
 sws

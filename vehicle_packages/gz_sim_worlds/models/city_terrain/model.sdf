@@ -38,7 +38,7 @@
 
             <texture>
               <diffuse>model://ocean/materials/textures/soil_sand_0045_01.jpg</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>10</size>
             </texture>
 
@@ -49,7 +49,7 @@
 
             <texture>
               <diffuse>model://ocean/materials/textures/soil_sand_0045_01.jpg</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>10</size>
             </texture>
 
@@ -60,7 +60,7 @@
 
             <texture>
               <diffuse>model://city_terrain/materials/textures/forest.jpg</diffuse>
-              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <normal>model://grass_plane/materials/textures/flat_normal.png</normal>
               <size>10</size>
             </texture>
 

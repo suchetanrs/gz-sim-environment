@@ -12,8 +12,8 @@ newmtl SUV_Body
 	Kd 0.5882 0.5882 0.5882
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka suv.png
-	map_Kd suv.png
+	map_Ka ../materials/textures/suv.png
+	map_Kd ../materials/textures/suv.png
 
 newmtl SUV_Wheels
 	Ns 10.0000

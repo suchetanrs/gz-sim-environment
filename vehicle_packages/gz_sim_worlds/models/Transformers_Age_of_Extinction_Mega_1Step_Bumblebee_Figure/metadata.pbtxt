@@ -1,0 +1,39 @@
+model {
+  file: "model.sdf"
+}
+name: "Transformers_Age_of_Extinction_Mega_1Step_Bumblebee_Figure"
+description: "Transformers Age of Extinction Mega 1-Step Bumblebee Figure\nJoin the epic battle between the Autobots and Decepticons with this giant Bumblebee figure that switches between robot and vehicle modes in 1 awesome step! You can experience the wow of the fluid conversion you see your favorite Transformers characters perform. Just flip to change from robot to vehicle and back. With a firing disc launcher included, you can create exciting Transformers battles, all in larger, mega-sized scale!"
+version: 1
+authors {
+  name: "Google"
+  email: "scanned-objects@google.com"
+}
+legal {
+  copyright: "Copyright 2020 Google LLC."
+  license: "Creative Commons Attribution 4.0 International"
+}
+annotations {
+  key: "brand"
+  value: "Hasbro"
+}
+annotations {
+  key: "gtin"
+  value: "653569950042"
+}
+annotations {
+  key: "mpn"
+  value: "a7799"
+}
+annotations {
+  key: "sku"
+  value: "A7799"
+}
+compatibilities {
+  name: "Gazebo"
+  version {
+    major: 11
+  }
+}
+categories {
+  first: "Toys"
+}

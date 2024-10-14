@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sdf version='1.4'>
+  <model name='tv_65in_emissive'>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.05 1.45 0.83</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://tv_65in_emissive/material/script</uri>
+            <uri>model://tv_65in_emissive/material/textures</uri>
+            <name>Custom/tv_emissive</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <static>1</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>

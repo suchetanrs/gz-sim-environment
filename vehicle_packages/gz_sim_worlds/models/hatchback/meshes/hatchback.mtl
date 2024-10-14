@@ -12,8 +12,8 @@ newmtl Hatchback
 	Kd 0.5882 0.5882 0.5882
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka hatchback.png
-	map_Kd hatchback.png
+	map_Ka ../materials/textures/hatchback.png
+	map_Kd ../materials/textures/hatchback.png
 
 newmtl Wheels3
 	Ns 10.0000

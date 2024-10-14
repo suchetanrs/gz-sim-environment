@@ -28,3 +28,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
 ENV GZ_VERSION harmonic
 # COPY ./root_dir/ros2_ws/ /root/ros2_ws/
 # RUN cd /root/ros2_ws/ && rosdep install --from-paths src --ignore-src -r -y
+RUN apt-get install -y ros-humble-octomap*
+RUN apt-get install -y ros-humble-twist-mux
+RUN apt-get install -y xterm
+RUN apt-get install -y nano vim ranger nautilus x11-apps

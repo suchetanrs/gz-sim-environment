@@ -9,7 +9,11 @@ import xacro
 import subprocess
 
 robot_coordinates = {
-    0: [-4.46, -5.80, 1.65],
+    0: [-3.22, -5.62, 1.65], # playpen featureless
+    # 0: [-1.0, -1.0, 1.65], 
+    # 0: [-5.0, 0.0, 2.5], # cave world
+    # 0: [-15.0, -15.0, 2.5], # marsyard
+    # 0: [0.0, 0.0, 2.5], # corridor
     1: [0.0, 5.0, 1.65],
     2: [5.0, 5.0, 1.65],
     3: [-1.0, 8.0, 1.65],
@@ -17,9 +21,9 @@ robot_coordinates = {
     5: [7.0, 8.0, 1.65]
 }
 
-robot_model_type = "model"
+robot_model_type = "small_vehicle"
 # you can choose from:
-# model, model_with_2_lidar
+# model, model_with_2_lidar, small_vehicle, small_vehicle_vert_lidar
 
 def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     pkg_project_description = get_package_share_directory("vehicle_bringup")
@@ -34,6 +38,8 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     
     with open(f"/tmp/model_{robot_idx_str}.sdf", 'r') as infp:
         robot_desc = infp.read()
+    
+    twist_mux_param_file = os.path.join(pkg_project_description, 'params', 'twist_mux.yaml')
 
     # Spawn a robot inside a simulation
     spawn_robot = Node(
@@ -73,8 +79,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         executable="parameter_bridge",
         name="parameter_bridge" + robot_idx_str,
         arguments=[
-            robot_ns + "cmd_vel_nav@geometry_msgs/msg/Twist]ignition.msgs.Twist",
-            robot_ns + "odom@nav_msgs/msg/Odometry[ignition.msgs.Odometry",
+            robot_ns + "cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist",
             robot_ns + "ground_truth_pose@nav_msgs/msg/Odometry[ignition.msgs.Odometry",
             robot_ns + "imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
             robot_ns + "joint_states@sensor_msgs/msg/JointState[ignition.msgs.Model",
@@ -113,7 +118,15 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         namespace=robot_ns,
         parameters=[{'speed': '0.4'}],
         prefix=["xterm -e"],
-        remappings=[('cmd_vel', 'cmd_vel_nav')],
+        remappings=[('cmd_vel', 'cmd_vel_teleop')],
+    )
+
+    twist_mux_cmd = Node(
+            package="twist_mux",
+            executable="twist_mux",
+            namespace=robot_ns,
+            parameters=[twist_mux_param_file],
+            remappings=[('cmd_vel_out','cmd_vel')]
     )
     
     return [
@@ -122,7 +135,8 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         topic_bridge,
         image_bridge_rgb,
         key_teleop_cmd,
-        bridge
+        bridge,
+        twist_mux_cmd
     ]
 
 

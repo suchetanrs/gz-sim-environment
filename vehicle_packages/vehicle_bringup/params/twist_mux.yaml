@@ -1,0 +1,12 @@
+/**:
+  twist_mux:
+    ros__parameters:
+      topics:
+        navigation:
+          topic   : cmd_vel_nav
+          timeout : 0.5
+          priority: 10
+        joystick:
+          topic   : cmd_vel_teleop
+          timeout : 0.5
+          priority: 100

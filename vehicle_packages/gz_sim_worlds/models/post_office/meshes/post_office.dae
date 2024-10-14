@@ -154,7 +154,7 @@
   </library_lights>
   <library_images>
     <image id="PostOffice_Diffuse_tga">
-      <init_from>post_office_diffuse.jpg</init_from>
+      <init_from>../materials/textures/post_office_diffuse.jpg</init_from>
     </image>
     <image id="PostOffice_Spec_tga">
       <init_from>post_office_spec.jpg</init_from>

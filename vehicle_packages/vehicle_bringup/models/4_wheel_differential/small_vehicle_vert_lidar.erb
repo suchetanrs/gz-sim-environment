@@ -1,0 +1,530 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+
+<%
+  robot_name = robot_name
+  robot_x = robot_x
+  robot_y = robot_y
+%>
+    <model name='<%= robot_name.to_s %>4_wheel_differential' canonical_link='<%= robot_name.to_s %>base_footprint'>
+    
+        <link name='<%= robot_name.to_s %>base_footprint'>
+            <pose relative_to='__model__'>0 0 0 0 0 0</pose> 
+            <inertial>
+                <mass>11.4395</mass>
+            </inertial>
+        </link>
+    
+        <link name='<%= robot_name.to_s %>base_link'>
+            <pose relative_to='<%= robot_name.to_s %>base_footprint'>0 0 0.30 0 0 0</pose>
+        </link>
+
+        <!--chassis-->
+        <link name='<%= robot_name.to_s %>chassis'>
+            <pose relative_to="<%= robot_name.to_s %>base_link">0 0 0.40 0 0 0</pose>
+            <!-- <inertial> inertial properties of the link mass, inertia matix
+                <mass>1.14395</mass>
+                <inertia>
+                    <ixx>0.007626</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.005302</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.007626</izz>
+                </inertia>
+            </inertial> -->
+            <visual name='visual'>
+                <geometry>
+                    <!-- Main body -->
+                    <box>
+                        <size>0.2 0.2 0.125</size>
+                    </box>
+                </geometry>
+                <!--Color of the link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>0.2 0.2 0.125</size>
+                    </box>
+                </geometry>
+            </collision>
+        </link>
+
+        <!--Left wheel-->
+        <link name='<%= robot_name.to_s %>left_wheel_back'>
+            <pose relative_to="<%= robot_name.to_s %>chassis">-0.15 0.2 -0.15 -1.5707 0 0</pose> <!--angles are in radian-->
+            <inertial>
+                <mass>3</mass>
+                <inertia>
+                    <ixx>0.015</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.015</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.01</izz>
+                </inertia>
+            </inertial>
+            <visual name='visual'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius> 
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <ambient>1.0 0.0 0.0 1</ambient>
+                    <diffuse>1.0 0.0 0.0 1</diffuse>
+                    <specular>1.0 0.0 0.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius>
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <surface>
+                <friction>
+                  <ode>
+                    <mu>0.90000000000000002</mu>
+                    <mu2>0.90000000000000002</mu2>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                </friction>
+                <contact>
+                  <ode>
+                    <min_depth>0.001</min_depth>
+                    <kp>1000000000</kp>
+                  </ode>
+                </contact>
+                <bounce/>
+              </surface>
+            </collision>
+        </link>
+
+        <!--The same as left wheel but with different position-->
+        <link name='<%= robot_name.to_s %>right_wheel_back'>
+            <pose relative_to="<%= robot_name.to_s %>chassis">-0.15 -0.2 -0.15 -1.5707 0 0</pose> <!--angles are in radian-->
+            <inertial>
+                <mass>3</mass>
+                <inertia>
+                    <ixx>0.015</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.015</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.01</izz>
+                </inertia>
+            </inertial>
+            <visual name='visual'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius>
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <ambient>1.0 0.0 0.0 1</ambient>
+                    <diffuse>1.0 0.0 0.0 1</diffuse>
+                    <specular>1.0 0.0 0.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius>
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <surface>
+                <friction>
+                  <ode>
+                    <mu>0.90000000000000002</mu>
+                    <mu2>0.90000000000000002</mu2>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                </friction>
+                <contact>
+                  <ode>
+                    <min_depth>0.001</min_depth>
+                    <kp>1000000000</kp>
+                  </ode>
+                </contact>
+                <bounce/>
+              </surface>
+            </collision>
+        </link>
+
+        <!--Left wheel-->
+        <link name='<%= robot_name.to_s %>left_wheel_front'>
+            <pose relative_to="<%= robot_name.to_s %>chassis">0.15 0.2 -0.15 -1.5707 0 0</pose> <!--angles are in radian-->
+            <inertial>
+                <mass>3</mass>
+                <inertia>
+                    <ixx>0.015</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.015</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.01</izz>
+                </inertia>
+            </inertial>
+            <visual name='visual'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius> 
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <ambient>1.0 0.0 0.0 1</ambient>
+                    <diffuse>1.0 0.0 0.0 1</diffuse>
+                    <specular>1.0 0.0 0.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius>
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <surface>
+                <friction>
+                  <ode>
+                    <mu>0.90000000000000002</mu>
+                    <mu2>0.90000000000000002</mu2>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                </friction>
+                <contact>
+                  <ode>
+                    <min_depth>0.001</min_depth>
+                    <kp>1000000000</kp>
+                  </ode>
+                </contact>
+                <bounce/>
+              </surface>
+            </collision>
+        </link>
+
+        <!--The same as left wheel but with different position-->
+        <link name='<%= robot_name.to_s %>right_wheel_front'>
+            <pose relative_to="<%= robot_name.to_s %>chassis">0.15 -0.2 -0.15 -1.5707 0 0</pose> <!--angles are in radian-->
+            <inertial>
+                <mass>3</mass>
+                <inertia>
+                    <ixx>0.015</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.015</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.01</izz>
+                </inertia>
+            </inertial>
+            <visual name='visual'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius>
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <ambient>1.0 0.0 0.0 1</ambient>
+                    <diffuse>1.0 0.0 0.0 1</diffuse>
+                    <specular>1.0 0.0 0.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.1</radius>
+                        <length>0.1</length>
+                    </cylinder>
+                </geometry>
+                <surface>
+                <friction>
+                  <ode>
+                    <mu>0.90000000000000002</mu>
+                    <mu2>0.90000000000000002</mu2>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                </friction>
+                <contact>
+                  <ode>
+                    <min_depth>0.001</min_depth>
+                    <kp>1000000000</kp>
+                  </ode>
+                </contact>
+                <bounce/>
+              </surface>
+            </collision>
+        </link>
+
+        <link name="<%= robot_name.to_s %>camera_link">
+            <pose relative_to="<%= robot_name.to_s %>chassis">0.30 0 0.45 0 0 0</pose>
+            <visual name='visual'>
+                <geometry>
+                    <!-- Main body -->
+                    <box>
+                        <size>0.1 0.1 0.1</size>
+                    </box>
+                </geometry>
+                <!--Color of the link-->
+                <material>
+                    <ambient>1, 1, 0.5, 1.0</ambient>
+                    <diffuse>1, 1, 0.5, 1.0</diffuse>
+                    <specular>1, 1, 0.5, 1.0</specular>
+                </material>
+            </visual>
+          <sensor name="<%= robot_name.to_s %>IMX214" type="camera">
+            <pose>0.01233 -0.03 .01878 0 0 0</pose>
+            <camera>
+              <horizontal_fov>1.204</horizontal_fov>
+              <image>
+                <width>640</width>
+                <height>480</height>
+              </image>
+              <clip>
+                <near>0.1</near>
+                <far>19.1</far>
+              </clip>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>false</visualize>
+            <topic><%= robot_name.to_s %>rgb_camera</topic>
+          </sensor>
+          <sensor name="<%= robot_name.to_s %>StereoOV7251" type="depth_camera">
+            <pose>0.01233 -0.03 .01878 0 0 0</pose>
+            <camera>
+              <horizontal_fov>1.274</horizontal_fov>
+              <image>
+                <width>640</width>
+                <height>480</height>
+                <format>R_FLOAT32</format>
+              </image>
+              <clip>
+                <near>0.2</near>
+                <far>19.1</far>
+              </clip>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>false</visualize>
+            <topic><%= robot_name.to_s %>depth_camera</topic>
+          </sensor>
+        </link>
+
+        <link name="<%= robot_name.to_s %>camera_link_stand">
+            <pose relative_to="<%= robot_name.to_s %>chassis">0.30 0 0.05 0 0 0</pose>
+            <visual name='visual'>
+                <geometry>
+                    <!-- Main body -->
+                    <box>
+                        <size>0.65 0.65 0.45</size>
+                    </box>
+                </geometry>
+                <!--Color of the link-->
+                <material>
+                    <ambient>1, 1, 0.5, 1.0</ambient>
+                    <diffuse>1, 1, 0.5, 1.0</diffuse>
+                    <specular>1, 1, 0.5, 1.0</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>0.65 0.95 0.45</size>
+                    </box>
+                </geometry>
+            </collision>
+        </link>
+
+        <link name="<%= robot_name.to_s %>imu_link">
+            <pose relative_to="<%= robot_name.to_s %>chassis">0 0 0 0 -0 0</pose>
+            <sensor name="<%= robot_name.to_s %>imu_sensor" type="imu">
+                <always_on>1</always_on>
+                <update_rate>50</update_rate>
+                <visualize>false</visualize>
+                <topic><%= robot_name.to_s %>imu</topic>
+            </sensor>
+        </link>
+
+        <link name="<%= robot_name.to_s %>lidar_link">
+            <pose relative_to="<%= robot_name.to_s %>chassis">0.3 0 1.0 0 0 0</pose>
+            <visual name='visual'>
+                <geometry>
+                    <cylinder>
+                        <radius>0.085</radius>
+                        <length>0.085</length>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <ambient>0.0 1 0.0 1</ambient>
+                    <diffuse>0.0 1 0.0 1</diffuse>
+                    <specular>1.0 0.0 0.0 1</specular>
+                </material>
+            </visual>
+            <sensor name='<%= robot_name.to_s %>gpu_lidar' type='gpu_lidar'>
+            <topic><%= robot_name.to_s %>lidar</topic>
+            <update_rate>50</update_rate>
+            <gz_frame_id><%= robot_name.to_s %>lidar_link</gz_frame_id>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>380</samples>
+                        <resolution>0.01</resolution>
+                        <min_angle>0</min_angle>
+                        <max_angle>6.30</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>40</samples>
+                        <resolution>0.01</resolution>
+                        <min_angle>-1.00</min_angle>
+                        <max_angle>-0.10</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.2</min>
+                    <max>8.5</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </lidar>
+            <alwaysOn>1</alwaysOn>
+            <visualize>false</visualize>
+            </sensor>
+        </link>
+
+        <joint name='<%= robot_name.to_s %>base_footprint_base_link_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>base_footprint</parent>
+            <child><%= robot_name.to_s %>base_link</child>
+        </joint>
+
+        <joint name='<%= robot_name.to_s %>base_link_chassis_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>base_link</parent>
+            <child><%= robot_name.to_s %>chassis</child>
+        </joint>
+
+        <joint name='<%= robot_name.to_s %>camera_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>camera_link</child>
+        </joint>
+
+        <joint name='<%= robot_name.to_s %>camera_stand_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>camera_link_stand</child>
+        </joint>
+
+        <joint name='<%= robot_name.to_s %>imu_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>imu_link</child>
+        </joint>
+
+        <joint name='<%= robot_name.to_s %>lidar_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>lidar_link</child>
+        </joint>
+
+        <!--left wheel joint-->
+        <joint name='<%= robot_name.to_s %>left_wheel_back_joint' type='revolute'>
+            <pose relative_to='<%= robot_name.to_s %>left_wheel_back'/>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>left_wheel_back</child>
+            <axis>
+                <xyz expressed_in='__model__'>0 1 0</xyz> <!--can be descired to any frame or even arbitrary frames-->
+                <limit>
+                    <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                    <upper>1.79769e+308</upper>     <!--positive infinity-->
+                </limit>
+            </axis>
+        </joint>
+
+        <!--right wheel joint-->
+        <joint name='<%= robot_name.to_s %>right_wheel_back_joint' type='revolute'>
+            <pose relative_to='<%= robot_name.to_s %>right_wheel_back'/>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>right_wheel_back</child>
+            <axis>
+                <xyz expressed_in='__model__'>0 1 0</xyz>
+                <limit>
+                    <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                    <upper>1.79769e+308</upper>     <!--positive infinity-->
+                </limit>
+            </axis>
+        </joint>
+
+        <!--left wheel joint-->
+        <joint name='<%= robot_name.to_s %>left_wheel_front_joint' type='revolute'>
+            <pose relative_to='<%= robot_name.to_s %>left_wheel_front'/>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>left_wheel_front</child>
+            <axis>
+                <xyz expressed_in='__model__'>0 1 0</xyz> <!--can be descired to any frame or even arbitrary frames-->
+                <limit>
+                    <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                    <upper>1.79769e+308</upper>     <!--positive infinity-->
+                </limit>
+            </axis>
+        </joint>
+
+        <!--right wheel joint-->
+        <joint name='<%= robot_name.to_s %>right_wheel_front_joint' type='revolute'>
+            <pose relative_to='<%= robot_name.to_s %>right_wheel_front'/>
+            <parent><%= robot_name.to_s %>chassis</parent>
+            <child><%= robot_name.to_s %>right_wheel_front</child>
+            <axis>
+                <xyz expressed_in='__model__'>0 1 0</xyz>
+                <limit>
+                    <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                    <upper>1.79769e+308</upper>     <!--positive infinity-->
+                </limit>
+            </axis>
+        </joint>
+
+        <plugin
+            filename="gz-sim-diff-drive-system"
+            name="gz::sim::systems::DiffDrive">
+            <left_joint><%= robot_name.to_s %>left_wheel_back_joint</left_joint>
+            <right_joint><%= robot_name.to_s %>right_wheel_back_joint</right_joint>
+            <left_joint><%= robot_name.to_s %>left_wheel_front_joint</left_joint>
+            <right_joint><%= robot_name.to_s %>right_wheel_front_joint</right_joint>
+            <wheel_separation>0.3</wheel_separation>
+            <wheel_radius>0.1</wheel_radius>
+            <topic><%= robot_name.to_s %>cmd_vel</topic>
+            <frame_id><%= robot_name.to_s %>odom_differential</frame_id>
+            <child_frame_id><%= robot_name.to_s %>base_footprint</child_frame_id>
+            <odom_publish_frequency>20</odom_publish_frequency>
+            <odom_topic><%= robot_name.to_s %>odom_differential</odom_topic>
+            <tf_topic>tf</tf_topic>
+            <max_linear_acceleration>2.5</max_linear_acceleration>
+            <max_angular_acceleration>3</max_angular_acceleration>
+            <min_linear_acceleration>-2.5</min_linear_acceleration>
+            <min_angular_acceleration>-3</min_angular_acceleration>
+        </plugin>
+
+        <plugin
+            filename="gz-sim-odometry-publisher-system"
+            name="gz::sim::systems::OdometryPublisher">
+            <odom_frame><%= robot_name.to_s %>odom</odom_frame>
+            <robot_base_frame><%= robot_name.to_s %>base_footprint</robot_base_frame>
+            <odom_publish_frequency>200</odom_publish_frequency>
+            <odom_topic><%= robot_name.to_s %>ground_truth_pose</odom_topic>
+            <!-- <xyz_offset><%= robot_x.to_s %> <%= robot_y.to_s %></xyz_offset> -->
+            <dimensions>3</dimensions>
+        </plugin>
+    </model>
+<%
+%>
+</sdf>

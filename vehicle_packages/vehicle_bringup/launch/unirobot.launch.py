@@ -23,12 +23,14 @@ def generate_launch_description():
             os.path.join(pkg_ros_gz_sim, "launch", "gz_sim.launch.py")
         ),
         launch_arguments={"gz_version": "8",
-                          "gz_args": "--headless-rendering -r marsyard2020.sdf"}.items(),
+                          "gz_args": "--headless-rendering -r playpen_featureless_diag.sdf"}.items(),
     )
     # clearpath_playpen.sdf
     # pittsburgh_mine.sdf
     # inspection.sdf
     # marsyard2022.sdf
+    # playpen_featureless.sdf
+    # indoor.sdf
     
     # if you wish to use gazebo without the GUI (increases RTF) use the arguments,
     # --headless-rendering -r -s clearpath_playpen.sdf

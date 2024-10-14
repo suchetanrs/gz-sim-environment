@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+    <model name="indoor_corridor">
+    <static>true</static>
+    
+    <link name="link_body">
+        <pose>0 0 0 0 0 0</pose>
+        <collision name="collision_body">
+        <pose>0 0 0 0 0 0</pose>
+        <laser_retro>0.5</laser_retro>
+        <geometry>
+            <mesh>
+            <uri>model://indoor_corridor/meshes/corridor_complete_walls.dae</uri>
+            <scale>100 100 100</scale>
+            </mesh>
+        </geometry>
+        </collision>
+        <visual name="visual_body">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+            <mesh>
+            <uri>model://indoor_corridor/meshes/corridor_complete_walls.dae</uri>
+            <scale>100 100 100</scale>
+            </mesh>
+        </geometry>
+        </visual>
+    </link>
+    <link name="link_landmarks">
+        <pose>0 0 0 0 0 0</pose>
+        <collision name="collision_landmarks">
+        <pose>0 0 0 0 0 0</pose>
+        <laser_retro>1</laser_retro>
+        <geometry>
+            <mesh>
+            <uri>model://indoor_corridor/meshes/corridor_complete_landmarks.dae</uri>
+            <scale>100 100 100</scale>
+            </mesh>
+        </geometry>
+        </collision>
+        <visual name="visual_landmarks">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+            <mesh>
+            <uri>model://indoor_corridor/meshes/corridor_complete_landmarks.dae</uri>
+            <scale>100 100 100</scale>
+            </mesh>
+        </geometry>
+        </visual>
+    </link>
+    </model>
+</sdf>

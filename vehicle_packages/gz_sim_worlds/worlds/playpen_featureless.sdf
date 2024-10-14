@@ -603,8 +603,52 @@
       <pose>7.81 -3.79 -0.15000000596046448 0 0 0</pose>
       <self_collide>false</self_collide>
     </model>
+    <model name='walkway_metal_900'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <pose>0 0.76200000000000001 0.076075000000000004 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.524 1.524 0.15215000000000001</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>0.0050000000000000001 0.003 0.001</scale>
+              <uri>model://walkway_metal_90/meshes/mesh.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>8.279810 6.153940 -0.15000000596046448 0 0 1.571910</pose>
+      <self_collide>false</self_collide>
+    </model>
     <model name='ambulance'>
-      <pose>9.926190 7.73 -0.44 1.5699999999999998 0 0</pose>
+      <pose>9.926190 7.73 -0.443233 1.5699999999999998 0 0</pose>
       <static>true</static>
       <link name='link'>
         <collision name='collision'>
@@ -640,6 +684,43 @@
       </link>
       <self_collide>false</self_collide>
     </model>
+    <!-- <model name='ambulance2'>
+      <pose>6.740000 10.910000 -0.670000 -0.070000 0 0</pose>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>0.03399999999999999 0.003400000000000002 0.064000000000000001</scale>
+              <uri>model://ambulance/meshes/ambulance.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>0.03399999999999999 0.003400000000000002 0.048000000000000001</scale>
+              <uri>model://ambulance/meshes/ambulance.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model> -->
     <model name='brick_wall_88'>
       <static>true</static>
       <pose>12.907916564941406 10.400000 0.55829700589179993 1.5700000042340219 0 0</pose>
@@ -647,7 +728,7 @@
         <visual name='brick_wall_1'>
           <geometry>
             <mesh>
-              <scale>1 1 2.5</scale>
+              <scale>1 1 2.0</scale>
               <uri>model://brick_wall_2/brick_wall_2.dae</uri>
             </mesh>
           </geometry>
@@ -655,7 +736,7 @@
         <collision name='brick_wall_1'>
           <geometry>
             <mesh>
-              <scale>1 1 2.5</scale>
+              <scale>1 1 2.0</scale>
               <uri>model://brick_wall_1/brick_wall_1.dae</uri>
             </mesh>
           </geometry>
@@ -1095,6 +1176,50 @@
       <pose>0 0 0 0 0 0</pose>
       <self_collide>false</self_collide>
     </model>
+    <model name="nist_maze_wall_120">
+      <static>true</static>
+      <link name="nist_maze_wall_120_link">
+        <pose>10.930000 10.220000 -0.600000 1.570000 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://nist_maze_wall_120/meshes/nist_maze_wall_120.dae</uri>
+              <scale>4 1 3</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://nist_maze_wall_120/meshes/nist_maze_wall_120.dae</uri>
+              <scale>4 1 3</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name="Transformers_Age_of_Extinction_Mega_1Step_Bumblebee_Figure">
+      <static>true</static>
+      <link name="link_0">
+      <pose>11.240000 7.760000 0.0 -0.800000 0 0</pose>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://Transformers_Age_of_Extinction_Mega_1Step_Bumblebee_Figure/meshes/model.obj</uri>
+              <scale>6 6 12</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name="collision_0">
+          <geometry>
+            <mesh>
+              <uri>model://Transformers_Age_of_Extinction_Mega_1Step_Bumblebee_Figure/meshes/model.obj</uri>
+              <scale>6 6 12</scale>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
     <model name='mars_rover'>
       <static>true</static>
       <link name='link'>
@@ -1409,7 +1534,7 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>0 0 0 0 0 0</pose>
+      <pose>0 0.815500 0 0 0 0</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='collapsed_fire_station'>
@@ -1448,6 +1573,34 @@
       </link>
       <pose>7.9600000381469727 10.675553321838379 0 0 0 0</pose>
       <self_collide>false</self_collide>
+    </model>
+    <model name='backpack'>
+      <static>true</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>4.0 4.0 4.0</scale>
+              <uri>model://backpack/meshes/backpack.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <pose>6.460000 10.750000 0.0 0.0 0.0 0.0</pose>
+    </model>
+    <model name='backpack2'>
+      <static>true</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>4.0 4.0 4.0</scale>
+              <uri>model://backpack/meshes/backpack.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <pose>5.099240 10.750000 0.0 0.0 0.0 0.0</pose>
     </model>
     <model name='thrift_shop'>
       <static>true</static>
@@ -2677,7 +2830,7 @@
         <enable_wind>false</enable_wind>
         <pose>0 0 0 0 0 0</pose>
       </link>
-      <pose>4.8070335565705831 5.646695299838532 -0.044216704808106501 0.096299075513002735 -0.090560267490002413 -0.69364125308998348</pose>
+      <pose>4.607230 5.635340 -0.070746 0.131800 0.008860 -1.512840</pose>
       <static>true</static>
       <self_collide>false</self_collide>
     </model>
@@ -3183,7 +3336,7 @@
         <enable_wind>false</enable_wind>
         <pose>0 0 0 0 0 0</pose>
       </link>
-      <pose>4.800000000000002 2.5299999999999998 0.001308705358611266 0.0025233614497186595 -0.0008008757567914297 0.0060694677005809243</pose>
+      <pose>4.800000000000002 2.750000 0.001308705358611266 0.0025233614497186595 -0.0008008757567914297 0.0060694677005809243</pose>
       <static>true</static>
       <self_collide>false</self_collide>
     </model>
@@ -3293,7 +3446,62 @@
         <enable_wind>false</enable_wind>
         <pose>0 0 0 0 0 0</pose>
       </link>
-      <pose>4.899999999999999 1.48 0.0015959972791040956 0.0070075153811100001 -0.0098791325856661758 -0.0083476639103251468</pose>
+      <pose>4.899999999999999 1.851970 0.0015959972791040956 0.0070075153811100001 -0.0098791325856661758 -0.0083476639103251468</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='Construction Barrel_88'>
+      <link name='link'>
+        <inertial>
+          <pose>0 0 0.40000000000000002 0 0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.209600000000002</ixx>
+            <iyy>51.209600000000002</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>false</self_collide>
+        <kinematic>false</kinematic>
+        <gravity>true</gravity>
+        <enable_wind>false</enable_wind>
+        <pose>0 0 0 0 0 0</pose>
+      </link>
+      <pose>4.921550 1.019290 0.0015959972791040956 0.0070075153811100001 -0.0098791325856661758 -0.0083476639103251468</pose>
       <static>true</static>
       <self_collide>false</self_collide>
     </model>
@@ -3507,6 +3715,68 @@
           <geometry>
             <box>
               <size>8.25 0.14999999999999999 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <pose>0 -1.5125 0 0 0 0</pose>
+        <self_collide>false</self_collide>
+        <enable_wind>false</enable_wind>
+        <kinematic>false</kinematic>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+      </link>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='Untitled_000000'>
+      <pose>3.379710 3.097170 -0.730834 0 0 1.605100</pose>
+      <link name='Wall_0'>
+        <collision name='Wall_0_Collision'>
+          <geometry>
+            <box>
+              <size>6.25 0.14999999999999999 1.0</size>
+            </box>
+          </geometry>
+          <pose>0 0 1.25 0 0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Wall_0_Visual'>
+          <pose>0 0 1.25 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>6.25 0.14999999999999999 1.0</size>
             </box>
           </geometry>
           <material>

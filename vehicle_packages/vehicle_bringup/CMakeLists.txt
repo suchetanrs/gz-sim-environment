@@ -11,6 +11,7 @@ install(
   DIRECTORY
     launch
     models
+    params
   DESTINATION share/${PROJECT_NAME}
 )
 

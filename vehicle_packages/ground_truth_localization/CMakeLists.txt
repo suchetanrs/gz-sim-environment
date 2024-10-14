@@ -19,5 +19,11 @@ install(TARGETS
   publish_tf
   DESTINATION lib/${PROJECT_NAME})
 
+# Install launch files
+install(DIRECTORY
+    launch
+    DESTINATION share/${PROJECT_NAME}
+)
+
 # Finalize
 ament_package()

@@ -153,7 +153,7 @@
   </library_lights>
   <library_images>
     <image id="Bridge_Diffuse_tga">
-      <init_from>truss_bridge_diffuse.jpg</init_from>
+      <init_from>../materials/textures/truss_bridge_diffuse.jpg</init_from>
     </image>
     <image id="Bridge_Spec_tga">
       <init_from>truss_bridge_spec.jpg</init_from>
