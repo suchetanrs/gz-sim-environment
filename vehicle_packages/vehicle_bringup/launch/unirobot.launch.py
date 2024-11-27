@@ -23,7 +23,7 @@ def generate_launch_description():
             os.path.join(pkg_ros_gz_sim, "launch", "gz_sim.launch.py")
         ),
         launch_arguments={"gz_version": "8",
-                          "gz_args": "--headless-rendering -r playpen_featureless_diag.sdf"}.items(),
+                          "gz_args": "--headless-rendering -r -s playpen_featureless_diag.sdf"}.items(),
     )
     # clearpath_playpen.sdf
     # pittsburgh_mine.sdf
