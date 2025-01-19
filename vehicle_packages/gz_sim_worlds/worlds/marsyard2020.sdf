@@ -42,12 +42,13 @@
     </light>
 
     <model name="marsyard">
+      <pose>50 50 0 0 0 0</pose>
       <include>
         <uri>model://marsyard2020_terrain</uri>
       </include>
     </model>
 
-    <model name='Untitled'>
+    <!-- <model name='Untitled'>
       <pose>-13.2722 0.292012 0 0 -0 0</pose>
       <link name='Wall_30'>
         <collision name='Wall_30_Collision'>
@@ -230,7 +231,7 @@
         <kinematic>0</kinematic>
       </link>
       <static>1</static>
-    </model>
+    </model> -->
 
   </world>
 </sdf>

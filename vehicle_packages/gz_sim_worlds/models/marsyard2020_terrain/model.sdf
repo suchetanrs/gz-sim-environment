@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
   <model name="marsyard2020_terrain">
-    <pose>0.0 0.0 0.0 1.5708 0.0 0.0 </pose>
+    <pose>14.051772 -2.276542 -1.0 1.5708 0.0 -1.5708 </pose>
     <static>true</static>
 
     <link name="marsyard_terrain">

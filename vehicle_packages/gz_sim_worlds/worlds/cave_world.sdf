@@ -128,7 +128,7 @@
     <model name='cave_world'>
       <static>1</static>
       <link name='link'>
-        <pose>0 0 0 1.5708 -0 0</pose>
+        <pose>100 100 0 1.5708 -0 0</pose>
         <collision name='collision'>
           <geometry>
             <mesh>
@@ -197,7 +197,7 @@
       <shadows>1</shadows>
     </scene>
     <wind/>
-    <model name='unit_box'>
+    <!-- <model name='unit_box'>
       <static>1</static>
       <pose>-2.980000 0.520000 1.250000 0 -0 0</pose>
       <link name='link'>
@@ -358,7 +358,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-    </model>
+    </model> -->
     <state world_name='default'>
       <sim_time>279 403000000</sim_time>
       <real_time>282 332375776</real_time>

@@ -157,7 +157,7 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>100 100</size>
+              <size>300 300</size>
             </plane>
           </geometry>
           <surface>
@@ -182,7 +182,7 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>100 100</size>
+              <size>300 300</size>
             </plane>
           </geometry>
           <material>
@@ -721,7 +721,7 @@
       </link>
       <self_collide>false</self_collide>
     </model> -->
-    <model name='brick_wall_88'>
+    <!-- <model name='brick_wall_88'>
       <static>true</static>
       <pose>12.907916564941406 10.400000 0.55829700589179993 1.5700000042340219 0 0</pose>
       <link name='brick _bar_1'>
@@ -757,7 +757,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <self_collide>false</self_collide>
-    </model>
+    </model> -->
     <model name='brick_wall_8'>
       <static>true</static>
       <pose>12.240000 9.490000 0.4982970654964447 1.5700000042340219 0 -0.070000</pose>
@@ -939,12 +939,12 @@
     </model>
     <model name='brick_wall_3'>
       <static>true</static>
-      <pose>12.465476036071777 -1.9950141906738281 0.50158947706222534 1.5702800224643376 -0.00060835748747869924 -0.86949303336457917</pose>
+      <pose>11.960000 -2.420000 0.50158947706222534 1.5702800224643376 -0.00060835748747869924 -0.86949303336457917</pose>
       <link name='brick _bar_1'>
         <visual name='brick_wall_1'>
           <geometry>
             <mesh>
-              <scale>1 1.5 1.5</scale>
+              <scale>1 0.5 1.2</scale>
               <uri>model://brick_wall_3/brick_wall_3.dae</uri>
             </mesh>
           </geometry>
@@ -1179,7 +1179,7 @@
     <model name="nist_maze_wall_120">
       <static>true</static>
       <link name="nist_maze_wall_120_link">
-        <pose>10.930000 10.220000 -0.600000 1.570000 0 0</pose>
+        <pose>10.030000 10.220000 -0.600000 1.570000 0 0</pose>
         <collision name="collision">
           <geometry>
             <mesh>
