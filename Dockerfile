@@ -1,5 +1,5 @@
 FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04 as glvnd
-FROM osrf/ros:humble-desktop-full-jammy
+FROM osrf/ros:jazzy-desktop-full-noble
 
 #setup
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -28,10 +28,12 @@ ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
 ENV GZ_VERSION harmonic
 # COPY ./root_dir/ros2_ws/ /root/ros2_ws/
 # RUN cd /root/ros2_ws/ && rosdep install --from-paths src --ignore-src -r -y
-RUN apt-get install -y ros-${ROS_DISTRO}-octomap*
-RUN apt-get install -y ros-${ROS_DISTRO}-twist-mux ros-${ROS_DISTRO}-pointcloud-to-laserscan
-RUN apt-get install -y xterm
-RUN apt-get install -y nano vim ranger nautilus x11-apps
+RUN apt-get install -y ros-${ROS_DISTRO}-octomap* \
+    ros-${ROS_DISTRO}-twist-mux \
+    ros-${ROS_DISTRO}-pointcloud-to-laserscan \
+    xterm \
+    nano vim ranger x11-apps 
+    # nautilus 
 
 RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
     ros-${ROS_DISTRO}-bond \

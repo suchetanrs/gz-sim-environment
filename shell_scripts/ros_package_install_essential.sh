@@ -14,7 +14,8 @@ cat /etc/hosts
 rosdep init
 rosdep update
 
-apt-get install ros-$ROS_DISTRO-rqt ros-$ROS_DISTRO-rqt-common-plugins -y
-apt-get install ros-$ROS_DISTRO-rviz2 -y
-apt-get install ros-$ROS_DISTRO-robot-localization -y
-sudo apt install ros-$ROS_DISTRO-ros-gzharmonic -y
+apt-get install -y ros-$ROS_DISTRO-rqt \
+    ros-$ROS_DISTRO-rqt-common-plugins \
+    ros-$ROS_DISTRO-rviz2 \
+    ros-$ROS_DISTRO-robot-localization \
+    ros-$ROS_DISTRO-ros-gz

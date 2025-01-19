@@ -21,7 +21,7 @@ robot_coordinates = {
     5: [7.0, 8.0, 1.65]
 }
 
-robot_model_type = "small_vehicle"
+robot_model_type = "small_vehicle_2d_lidar"
 # you can choose from:
 # model, model_with_2_lidar, small_vehicle, small_vehicle_vert_lidar, small_vehicle_2d_lidar
 
@@ -127,7 +127,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
             package="twist_mux",
             executable="twist_mux",
             namespace=robot_ns,
-            parameters=[twist_mux_param_file],
+            parameters=[twist_mux_param_file, {"use_stamped": False}],
             remappings=[('cmd_vel_out','cmd_vel')]
     )
 

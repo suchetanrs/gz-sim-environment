@@ -4,7 +4,7 @@ Run ```cd <cloned_repo>```
 1. ```echo "xhost +" >> ~/.bashrc && source ~/.bashrc``` you can ignore if done already.
 2. ```sudo chmod +x install-nvidia-container-toolkit.sh```
 3. ```./install-nvidia-container-toolkit.sh```
-4. ```sudo docker build -t gazebo-vehicle-ros2-gpu-harmonic:humble .```
+4. ```sudo docker build -t gazebo-vehicle-ros2-gpu-harmonic:jazzy .```
 5. ```sudo docker compose run vehicle_simulator_gz_sim```
 6. ```sudo chmod +x launch_simulation.sh```
 7. ```./launch_simulation.sh```
