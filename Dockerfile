@@ -29,6 +29,31 @@ ENV GZ_VERSION harmonic
 # COPY ./root_dir/ros2_ws/ /root/ros2_ws/
 # RUN cd /root/ros2_ws/ && rosdep install --from-paths src --ignore-src -r -y
 RUN apt-get install -y ros-humble-octomap*
-RUN apt-get install -y ros-humble-twist-mux
+RUN apt-get install -y ros-humble-twist-mux ros-humble-pointcloud-to-laserscan
 RUN apt-get install -y xterm
 RUN apt-get install -y nano vim ranger nautilus x11-apps
+
+RUN apt-get install -y ros-humble-bondcpp \
+    ros-humble-bond \
+    ros-humble-test-msgs \
+    libsuitesparse-dev \
+    libceres-dev \
+    libgraphicsmagick++1-dev \
+    graphicsmagick-libmagick-dev-compat \
+    libxtensor-dev \
+    libomp-dev \
+    libbenchmark-dev \
+    ros-humble-ompl \
+    nlohmann-json3-dev \
+    ros-humble-behaviortree-cpp-v3 \
+    lcov \
+    python3-zmq
+
+# COPY other_ws/src /root/other_ws/src
+# RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y --simulate
+
+# COPY other_ws/src/slam_toolbox /root/other_ws/src/slam_toolbox
+# RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y
+
+# COPY other_ws/src/navigation2 /root/other_ws/src/navigation2
+# RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y

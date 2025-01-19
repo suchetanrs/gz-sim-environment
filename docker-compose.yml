@@ -15,6 +15,8 @@ services:
       #ros-workspaces
       - ./root_dir/:/root/:rw
       - ./vehicle_packages:/root/ros2_ws/src/vehicle_packages/:rw
+      - ./other_ws:/root/other_ws:rw
+      - ./experimental_ws:/root/experimental_ws:rw
       # - ../.ros/:/root/.ros
     privileged: true
     runtime: nvidia

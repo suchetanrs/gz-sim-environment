@@ -34,6 +34,7 @@ private:
 
         // odom to base_link
         transform_stamped.header.stamp = msg->header.stamp;
+        // transform_stamped.header.stamp = this->now();
         transform_stamped.header.frame_id = static_cast<std::string>(this->get_namespace()) + "/odom";
         transform_stamped.child_frame_id = static_cast<std::string>(this->get_namespace()) + "/base_footprint";
 
@@ -44,21 +45,6 @@ private:
 
         tf_broadcaster_->sendTransform(transform_stamped);
 
-        if(map_to_odom_tf_)
-        {
-            // map to odom (0 transform)
-            transform_stamped.header.stamp = msg->header.stamp;
-            transform_stamped.header.frame_id = "map";
-            transform_stamped.child_frame_id = static_cast<std::string>(this->get_namespace()) + "/odom";
-
-            transform_stamped.transform.translation.x = 0.0;
-            transform_stamped.transform.translation.y = 0.0;
-            transform_stamped.transform.translation.z = 0.0;
-            geometry_msgs::msg::Quaternion default_quat;
-            transform_stamped.transform.rotation = default_quat;
-
-            tf_broadcaster_->sendTransform(transform_stamped);
-        }
         if(map_to_odom_tf_)
         {
             // map to odom (0 transform)

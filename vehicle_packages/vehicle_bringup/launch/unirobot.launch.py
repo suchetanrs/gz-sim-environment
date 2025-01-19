@@ -42,7 +42,7 @@ def generate_launch_description():
         name="clock_bridge",
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
-            "tf@tf2_msgs/msg/TFMessage[ignition.msgs.Pose_V",
+            # "tf@tf2_msgs/msg/TFMessage[ignition.msgs.Pose_V",
         ],
         parameters=[
             {

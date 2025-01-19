@@ -17,3 +17,8 @@ root_dir/.bash_history
 root_dir/.viminfo
 root_dir/.wget-hsts
 **__pycache__**
+other_ws/build**
+other_ws/install**
+other_ws/log**
+other_ws/**
+experimental_ws/**

@@ -2,3 +2,6 @@ root_dir/
 .vscode/
 !root_dir/shell_scripts
 vehicle_packages/
+other_ws/build/
+other_ws/install/
+other_ws/log/
