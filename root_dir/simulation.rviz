@@ -94,8 +94,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        map:
-          Value: true
         robot_0/base_footprint:
           Value: true
         robot_0/base_link:
@@ -112,27 +110,24 @@ Visualization Manager:
           Value: true
         robot_0/odom:
           Value: true
-        robot_0/odom_differential:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        map:
-          robot_0/odom:
-            robot_0/base_footprint:
-              robot_0/base_link:
-                robot_0/chassis:
-                  robot_0/camera_link:
-                    {}
-                  robot_0/camera_link_stand:
-                    {}
-                  robot_0/imu_link:
-                    {}
-                  robot_0/lidar_link:
-                    {}
+        robot_0/odom:
+          robot_0/base_footprint:
+            robot_0/base_link:
+              robot_0/chassis:
+                robot_0/camera_link:
+                  {}
+                robot_0/camera_link_stand:
+                  {}
+                robot_0/imu_link:
+                  {}
+                robot_0/lidar_link:
+                  {}
       Update Interval: 0
       Value: true
     - Class: rviz_default_plugins/Image
@@ -325,7 +320,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: map
+    Fixed Frame: robot_0/odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -368,16 +363,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 4.174245834350586
+      Distance: 22.78619956970215
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 10.493938446044922
-        Y: 7.883063793182373
-        Z: 1.7510570287704468
+        X: 1.0567011833190918
+        Y: -2.6820123195648193
+        Z: 1.741389274597168
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false

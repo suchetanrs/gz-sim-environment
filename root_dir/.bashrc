@@ -101,10 +101,10 @@ export XDG_RUNTIME_DIR=/tmp/runtime-root
 alias ranger='ranger --choosedir=/root/.rangerdir; LASTDIR=`cat /root/.rangerdir`; cd $LASTDIR'
 alias cdros='cd /root/ros2_ws/'
 alias sws='source /root/ros2_ws/install/setup.bash'
-alias sros='source /opt/ros/humble/setup.bash'
+alias sros='source /opt/ros/$ROS_DISTRO/setup.bash'
 alias sep='echo "================================================================="'
 alias kk='kill -9 %1; kill -9 %1; kill -9 %1'
-source /opt/ros/humble/setup.bash
+source /opt/ros/$ROS_DISTRO/setup.bash
 export ROS_DOMAIN_ID=55
 export RCUTILS_COLORIZED_OUTPUT=1
 export ROS_LOCALHOST_ONLY=1

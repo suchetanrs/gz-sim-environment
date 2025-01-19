@@ -28,14 +28,14 @@ ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
 ENV GZ_VERSION harmonic
 # COPY ./root_dir/ros2_ws/ /root/ros2_ws/
 # RUN cd /root/ros2_ws/ && rosdep install --from-paths src --ignore-src -r -y
-RUN apt-get install -y ros-humble-octomap*
-RUN apt-get install -y ros-humble-twist-mux ros-humble-pointcloud-to-laserscan
+RUN apt-get install -y ros-${ROS_DISTRO}-octomap*
+RUN apt-get install -y ros-${ROS_DISTRO}-twist-mux ros-${ROS_DISTRO}-pointcloud-to-laserscan
 RUN apt-get install -y xterm
 RUN apt-get install -y nano vim ranger nautilus x11-apps
 
-RUN apt-get install -y ros-humble-bondcpp \
-    ros-humble-bond \
-    ros-humble-test-msgs \
+RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
+    ros-${ROS_DISTRO}-bond \
+    ros-${ROS_DISTRO}-test-msgs \
     libsuitesparse-dev \
     libceres-dev \
     libgraphicsmagick++1-dev \
@@ -43,9 +43,9 @@ RUN apt-get install -y ros-humble-bondcpp \
     libxtensor-dev \
     libomp-dev \
     libbenchmark-dev \
-    ros-humble-ompl \
+    ros-${ROS_DISTRO}-ompl \
     nlohmann-json3-dev \
-    ros-humble-behaviortree-cpp-v3 \
+    ros-${ROS_DISTRO}-behaviortree-cpp-v3 \
     lcov \
     python3-zmq
 

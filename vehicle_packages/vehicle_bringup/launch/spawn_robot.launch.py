@@ -23,7 +23,7 @@ robot_coordinates = {
 
 robot_model_type = "small_vehicle"
 # you can choose from:
-# model, model_with_2_lidar, small_vehicle, small_vehicle_vert_lidar
+# model, model_with_2_lidar, small_vehicle, small_vehicle_vert_lidar, small_vehicle_2d_lidar
 
 def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     pkg_project_description = get_package_share_directory("vehicle_bringup")
@@ -81,10 +81,12 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         arguments=[
             robot_ns + "cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist",
             robot_ns + "ground_truth_pose@nav_msgs/msg/Odometry[ignition.msgs.Odometry",
+            robot_ns + "odom_differential@nav_msgs/msg/Odometry[ignition.msgs.Odometry",
             robot_ns + "imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
             robot_ns + "joint_states@sensor_msgs/msg/JointState[ignition.msgs.Model",
             robot_ns + "lidar/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "lidar_vertical/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
+            robot_ns + "lidar_2d/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo"
         ],
         parameters=[
@@ -128,7 +130,39 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
             parameters=[twist_mux_param_file],
             remappings=[('cmd_vel_out','cmd_vel')]
     )
-    
+
+    pcl_to_laserscan = Node(
+        package='pointcloud_to_laserscan',
+        executable='pointcloud_to_laserscan_node',
+        name='pointcloud_to_laserscan',
+        parameters=[{
+            'target_frame': robot_ns + 'base_link',
+            'min_height': -3.0,
+            'max_height': 3.0,
+            'angle_min': -3.139,  # -90 degrees
+            'angle_max': 3.139,   # 90 degrees
+            'angle_increment': 0.01,
+            'scan_time': 0.1,
+            'range_min': 0.5,
+            'range_max': 10.0,
+            'use_inf': True,
+            "use_sim_time": True
+        }],
+        remappings=[
+            ('cloud_in', robot_ns + "lidar_2d/points"),  # Input point cloud
+            ('scan', robot_ns + "scan")  # Output LaserScan
+        ]
+    )
+
+    publish_gt_odom_tf = Node(
+        package='ground_truth_localization',
+        executable='publish_tf',
+        namespace=namespace,
+        parameters=[{"publish_map_to_odom_tf": False,
+                     "use_sim_time": True}],
+        output='screen'
+    )
+
     return [
         spawn_robot,
         robot_state_publisher,
@@ -136,9 +170,10 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         image_bridge_rgb,
         key_teleop_cmd,
         bridge,
-        twist_mux_cmd
+        twist_mux_cmd,
+        pcl_to_laserscan,
+        publish_gt_odom_tf
     ]
-
 
 def generate_launch_description():
     name_argument = DeclareLaunchArgument(
