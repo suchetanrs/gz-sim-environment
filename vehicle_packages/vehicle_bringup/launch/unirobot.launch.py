@@ -30,6 +30,7 @@ def generate_launch_description():
     # inspection.sdf
     # marsyard2022.sdf
     # playpen_featureless.sdf
+    # playpen_featureless_diag.sdf
     # indoor.sdf
     
     # if you wish to use gazebo without the GUI (increases RTF) use the arguments,
@@ -57,7 +58,8 @@ def generate_launch_description():
             PythonLaunchDescriptionSource(
                 os.path.join(pkg_project_gazebo, "launch", "vehicle_gz.launch.py")
             ),
-            launch_arguments={"robot_ns": f"robot_{i}/"}.items(),
+            # launch_arguments={"robot_ns": f"robot_{i}/"}.items(),
+            launch_arguments={"robot_ns": ""}.items(),
         )
         for i in range(0, 1)
     ]
