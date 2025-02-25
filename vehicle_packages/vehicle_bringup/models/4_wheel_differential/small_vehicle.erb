@@ -291,13 +291,13 @@
           <sensor name="<%= robot_name.to_s %>IMX214" type="camera">
             <pose>0.01233 -0.03 .01878 0 0 0</pose>
             <camera>
-              <horizontal_fov>1.204</horizontal_fov>
+              <horizontal_fov>1.274</horizontal_fov>
               <image>
                 <width>640</width>
                 <height>480</height>
               </image>
               <clip>
-                <near>0.1</near>
+                <near>0.01</near>
                 <far>19.1</far>
               </clip>
             </camera>
@@ -316,9 +316,14 @@
                 <format>R_FLOAT32</format>
               </image>
               <clip>
-                <near>0.2</near>
-                <far>19.1</far>
+                <near>0.01</near>
+                <far>6.1</far>
               </clip>
+              <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.100</stddev>
+              </noise>
             </camera>
             <always_on>1</always_on>
             <update_rate>30</update_rate>

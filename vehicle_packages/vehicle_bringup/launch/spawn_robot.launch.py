@@ -177,7 +177,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         bridge,
         twist_mux_cmd,
         pcl_to_laserscan,
-        publish_gt_odom_tf
+#        publish_gt_odom_tf
     ]
 
 def generate_launch_description():
