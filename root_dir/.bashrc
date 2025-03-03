@@ -111,3 +111,4 @@ export ROS_LOCALHOST_ONLY=1
 cd
 sros
 sws
+source /root/ros_env_vars.sh

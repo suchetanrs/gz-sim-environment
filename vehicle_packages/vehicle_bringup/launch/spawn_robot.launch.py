@@ -90,6 +90,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
             robot_ns + "joint_states@sensor_msgs/msg/JointState[ignition.msgs.Model",
             robot_ns + "lidar/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "lidar_vertical/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
+            # robot_ns + "depth_camera/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "lidar_2d/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo"
         ],
