@@ -6,7 +6,7 @@ root_dir/.gz
 root_dir/.ignition
 root_dir/.local
 root_dir/.nv
-root_dir/.ros
+root_dir/.ros/log
 root_dir/.rviz2
 root_dir/.sdformat
 root_dir/.simulation-gazebo
