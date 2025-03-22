@@ -28,13 +28,17 @@ robot_model_type = "small_vehicle_2d_lidar"
 def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     pkg_project_description = get_package_share_directory("vehicle_bringup")
     robot_ns = namespace.perform(context)
-    robot_idx_str = robot_ns[-2]
+    if(robot_ns == ""):
+        robot_idx_str = "0"
+    else:
+        robot_idx_str = robot_ns[-2]
     robot_idx = int(robot_idx_str)
+    print(f"IDX of the robot: {robot_idx}")
 
     erb_file = os.path.join(pkg_project_description, 'models', '4_wheel_differential', robot_model_type + '.erb')
     rb_file = os.path.join(pkg_project_description, 'models', '4_wheel_differential', 'model.rb')
-    print(f"ruby {rb_file} {robot_ns} {erb_file} /tmp/model_{robot_idx_str}.sdf {robot_coordinates[robot_idx][0]} {robot_coordinates[robot_idx][1]}")
-    process = subprocess.run(f"ruby {rb_file} {robot_ns} {erb_file} /tmp/model_{robot_idx_str}.sdf {robot_coordinates[robot_idx][0]} {robot_coordinates[robot_idx][1]}", shell=True, check=True)
+    print(f"ruby {rb_file} \"{robot_ns}\" {erb_file} /tmp/model_{robot_idx_str}.sdf {robot_coordinates[robot_idx][0]} {robot_coordinates[robot_idx][1]}")
+    process = subprocess.run(f"ruby {rb_file} \"{robot_ns}\" {erb_file} /tmp/model_{robot_idx_str}.sdf {robot_coordinates[robot_idx][0]} {robot_coordinates[robot_idx][1]}", shell=True, check=True)
     
     with open(f"/tmp/model_{robot_idx_str}.sdf", 'r') as infp:
         robot_desc = infp.read()
@@ -86,6 +90,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
             robot_ns + "joint_states@sensor_msgs/msg/JointState[ignition.msgs.Model",
             robot_ns + "lidar/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "lidar_vertical/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
+            # robot_ns + "depth_camera/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "lidar_2d/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
             robot_ns + "camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo"
         ],
@@ -154,6 +159,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         ]
     )
 
+    # publishes the odom -> base_footprint tf
     publish_gt_odom_tf = Node(
         package='ground_truth_localization',
         executable='publish_tf',
@@ -172,7 +178,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         bridge,
         twist_mux_cmd,
         pcl_to_laserscan,
-        publish_gt_odom_tf
+#        publish_gt_odom_tf
     ]
 
 def generate_launch_description():
