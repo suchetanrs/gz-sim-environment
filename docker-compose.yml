@@ -29,6 +29,7 @@ services:
               capabilities: [gpu]
     network_mode: host
     ipc: host
+    pid: host
     stdin_open: true
     tty: true
     environment:
