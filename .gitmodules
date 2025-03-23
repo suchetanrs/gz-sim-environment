@@ -1,0 +1,3 @@
+[submodule "other_ws/src/navigation2"]
+	path = other_ws/src/navigation2
+	url = https://github.com/suchetanrs/navigation2
