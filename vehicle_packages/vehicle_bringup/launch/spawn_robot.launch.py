@@ -141,7 +141,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         executable='pointcloud_to_laserscan_node',
         name='pointcloud_to_laserscan',
         parameters=[{
-            'target_frame': robot_ns + 'base_link',
+            'target_frame': robot_ns + 'lidar_link',
             'min_height': -3.0,
             'max_height': 3.0,
             'angle_min': -3.139,  # -90 degrees
@@ -168,6 +168,14 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
                      "use_sim_time": True}],
         output='screen'
     )
+    
+    cmd_vel_republisher = Node(
+        package='ground_truth_localization',
+        executable='cmd_vel_republisher',
+        namespace=namespace,
+        parameters=[{"use_sim_time": True}],
+        output='screen'
+    )
 
     return [
         spawn_robot,
@@ -178,7 +186,8 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         bridge,
         twist_mux_cmd,
         pcl_to_laserscan,
-#        publish_gt_odom_tf
+        publish_gt_odom_tf,
+        cmd_vel_republisher
     ]
 
 def generate_launch_description():

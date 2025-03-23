@@ -380,7 +380,7 @@
             <sensor name='<%= robot_name.to_s %>gpu_lidar' type='gpu_lidar'>
             <topic><%= robot_name.to_s %>lidar_2d</topic>
             <update_rate>12</update_rate>
-            <gz_frame_id><%= robot_name.to_s %>base_footprint</gz_frame_id>
+            <gz_frame_id><%= robot_name.to_s %>lidar_link</gz_frame_id>
             <lidar>
                 <scan>
                     <horizontal>

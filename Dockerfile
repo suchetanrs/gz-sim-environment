@@ -52,7 +52,8 @@ RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
     python3-zmq \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
 
-# COPY other_ws/src /root/other_ws/src
+COPY other_ws/src /root/other_ws/src
+RUN cd /root/other_ws/ && rosdep install --from-paths src --ignore-src -r -y
 # RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y --simulate
 
 # COPY other_ws/src/slam_toolbox /root/other_ws/src/slam_toolbox
