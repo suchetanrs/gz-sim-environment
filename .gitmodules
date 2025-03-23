@@ -4,3 +4,6 @@
 [submodule "other_ws/src/common_interfaces"]
 	path = other_ws/src/common_interfaces
 	url = https://github.com/ros2/common_interfaces
+[submodule "other_ws/src/slam_toolbox"]
+	path = other_ws/src/slam_toolbox
+	url = https://github.com/SteveMacenski/slam_toolbox
