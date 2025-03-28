@@ -22,13 +22,14 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, "launch", "gz_sim.launch.py")
         ),
-        launch_arguments={"gz_version": "8",
-                          "gz_args": "--headless-rendering -r -s marsyard2020_walls.sdf"}.items(),
+        launch_arguments={"gz_version": "9",
+                          "gz_args": "--headless-rendering -r -s playpen_featureless_diag.sdf"}.items(),
     )
     # clearpath_playpen.sdf
     # pittsburgh_mine.sdf
     # inspection.sdf
     # marsyard2022.sdf
+    # marsyard2020_walls
     # playpen_featureless.sdf
     # playpen_featureless_diag.sdf
     # indoor.sdf

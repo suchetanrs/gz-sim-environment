@@ -1,5 +1,5 @@
 FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04 as glvnd
-FROM osrf/ros:jazzy-desktop-full-noble
+FROM osrf/ros:rolling-desktop-full-noble
 
 #setup
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=glvnd /usr/share/glvnd/egl_vendor.d/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
 ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
 ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
-ENV GZ_VERSION harmonic
+ENV GZ_VERSION ionic
 # COPY ./root_dir/ros2_ws/ /root/ros2_ws/
 # RUN cd /root/ros2_ws/ && rosdep install --from-paths src --ignore-src -r -y
 RUN apt-get install -y ros-${ROS_DISTRO}-octomap* \
