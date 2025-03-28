@@ -14,9 +14,12 @@ include_directories(include)
 add_executable(publish_tf src/publish_tf.cpp)
 ament_target_dependencies(publish_tf rclcpp nav_msgs tf2_ros)
 
+add_executable(cmd_vel_republisher src/cmd_vel_republisher.cpp)
+ament_target_dependencies(cmd_vel_republisher rclcpp nav_msgs tf2_ros)
+
 # Install the executable
 install(TARGETS
-  publish_tf
+  publish_tf cmd_vel_republisher
   DESTINATION lib/${PROJECT_NAME})
 
 # Install launch files
