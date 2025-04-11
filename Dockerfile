@@ -54,6 +54,13 @@ RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
 
 COPY other_ws/src /root/other_ws/src
 RUN cd /root/other_ws/ && rosdep install --from-paths src --ignore-src -r -y
+
+COPY ./shell_scripts/install_browser.sh /root/
+RUN cd /root/ && sudo chmod +x * && ./install_browser.sh && rm -rf install_browser.sh
+
+COPY tracing_ws/src /root/tracing_ws/src
+RUN cd /root/tracing_ws/ && rosdep install --from-paths src --ignore-src -r -y
+RUN apt-get install -y babeltrace*
 # RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y --simulate
 
 # COPY other_ws/src/slam_toolbox /root/other_ws/src/slam_toolbox

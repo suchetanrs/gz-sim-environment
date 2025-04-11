@@ -7,3 +7,12 @@
 [submodule "other_ws/src/slam_toolbox"]
 	path = other_ws/src/slam_toolbox
 	url = https://github.com/SteveMacenski/slam_toolbox
+[submodule "tracing_ws/src/tracetools_analysis"]
+	path = tracing_ws/src/tracetools_analysis
+	url = https://github.com/ros-tracing/tracetools_analysis.git
+[submodule "tracing_ws/src/ros2_tracing"]
+	path = tracing_ws/src/ros2_tracing
+	url = https://github.com/suchetanrs/ros2_tracing
+[submodule "tracing_ws/src/performance_test"]
+	path = tracing_ws/src/performance_test
+	url = https://gitlab.com/ApexAI/performance_test.git
