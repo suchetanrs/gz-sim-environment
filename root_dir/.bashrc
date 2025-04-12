@@ -112,3 +112,4 @@ cd
 sros
 sws
 source /root/ros_env_vars.sh
+alias inslttng="cd && ./shell_scripts/install_lttng.sh"

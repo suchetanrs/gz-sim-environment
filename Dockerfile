@@ -61,6 +61,13 @@ RUN cd /root/ && sudo chmod +x * && ./install_browser.sh && rm -rf install_brows
 COPY tracing_ws/src /root/tracing_ws/src
 RUN cd /root/tracing_ws/ && rosdep install --from-paths src --ignore-src -r -y
 RUN apt-get install -y babeltrace*
+
+#install lttng
+RUN sudo apt-get update && sudo apt-get install -y uuid-dev libpopt-dev liburcu-dev libxml2-dev numactl linux-headers-$(uname -r) pkg-config libnuma-dev asciidoc xmlto
+COPY ./LTTng /root/LTTng
+COPY shell_scripts/install_lttng.sh /root/
+RUN cd /root/ && sudo chmod +x * && ./install_lttng.sh
+
 # RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y --simulate
 
 # COPY other_ws/src/slam_toolbox /root/other_ws/src/slam_toolbox

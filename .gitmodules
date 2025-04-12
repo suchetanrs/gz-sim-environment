@@ -16,3 +16,6 @@
 [submodule "tracing_ws/src/performance_test"]
 	path = tracing_ws/src/performance_test
 	url = https://gitlab.com/ApexAI/performance_test.git
+[submodule "tracing_ws/src/ament_cmake_ros"]
+	path = tracing_ws/src/ament_cmake_ros
+	url = https://github.com/ros2/ament_cmake_ros
