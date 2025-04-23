@@ -300,6 +300,8 @@
                 <near>0.1</near>
                 <far>19.1</far>
               </clip>
+              <camera_info_topic><%= robot_name.to_s %>rgb_camera/camera_info</camera_info_topic>
+              <optical_frame_id><%= robot_name.to_s %>camera_link_optical</optical_frame_id>
             </camera>
             <always_on>1</always_on>
             <update_rate>30</update_rate>
@@ -319,12 +321,17 @@
                 <near>0.2</near>
                 <far>19.1</far>
               </clip>
+              <optical_frame_id><%= robot_name.to_s %>camera_link_optical</optical_frame_id>
             </camera>
             <always_on>1</always_on>
             <update_rate>30</update_rate>
             <visualize>false</visualize>
             <topic><%= robot_name.to_s %>depth_camera</topic>
           </sensor>
+        </link>
+
+        <link name="<%= robot_name.to_s %>camera_link_optical">
+            <pose relative_to="<%= robot_name.to_s %>chassis">0.30 0 0.45 -1.5708 0 -1.5708</pose>
         </link>
 
         <link name="<%= robot_name.to_s %>camera_link_stand">
@@ -425,6 +432,11 @@
         <joint name='<%= robot_name.to_s %>camera_stand_joint' type='fixed'>
             <parent><%= robot_name.to_s %>chassis</parent>
             <child><%= robot_name.to_s %>camera_link_stand</child>
+        </joint>
+
+        <joint name='<%= robot_name.to_s %>camera_link_optical_joint' type='fixed'>
+            <parent><%= robot_name.to_s %>camera_link</parent>
+            <child><%= robot_name.to_s %>camera_link_optical</child>
         </joint>
 
         <joint name='<%= robot_name.to_s %>imu_joint' type='fixed'>
