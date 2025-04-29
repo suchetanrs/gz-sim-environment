@@ -1,0 +1,18 @@
+[submodule "experimental_ws/src/navigation2"]
+	path = experimental_ws/src/navigation2
+	url = https://github.com/coderwyvern/navigation2
+[submodule "other_ws/src/BehaviorTree.CPP"]
+	path = other_ws/src/BehaviorTree.CPP
+	url = https://github.com/BehaviorTree/BehaviorTree.CPP
+[submodule "other_ws/src/common_interfaces"]
+	path = other_ws/src/common_interfaces
+	url = https://github.com/ros2/common_interfaces
+[submodule "other_ws/src/launch"]
+	path = other_ws/src/launch
+	url = https://github.com/suchetanrs/launch
+[submodule "other_ws/src/nav2_minimal_turtlebot_simulation"]
+	path = other_ws/src/nav2_minimal_turtlebot_simulation
+	url = https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation
+[submodule "other_ws/src/slam_toolbox"]
+	path = other_ws/src/slam_toolbox
+	url = https://github.com/SteveMacenski/slam_toolbox
