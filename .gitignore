@@ -23,3 +23,12 @@ other_ws/log**
 other_ws/**
 experimental_ws/**
 root_dir/ros_env_vars.sh
+
+root_dir/.ros/rosdep/
+root_dir/custom_ws/
+root_dir/ros2-jazzy-20250407-linux-rhel9-amd64.tar.bz2
+root_dir/ros2-package-linux-x86_64.tar.bz2
+root_dir/ros2_completion_demo.sh
+root_dir/ros2_jazzy/
+root_dir/ros2_kilted/
+root_dir/rosbag2_2025_05_02-18_49_25/

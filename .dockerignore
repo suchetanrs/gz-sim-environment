@@ -1,6 +1,7 @@
 root_dir/
 .vscode/
 !root_dir/shell_scripts
+!root_dir/ros2_kilted
 vehicle_packages/
 other_ws/build/
 other_ws/install/

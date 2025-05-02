@@ -104,11 +104,11 @@ alias sws='source /root/ros2_ws/install/setup.bash'
 alias sros='source /opt/ros/$ROS_DISTRO/setup.bash'
 alias sep='echo "================================================================="'
 alias kk='kill -9 %1; kill -9 %1; kill -9 %1'
-source /opt/ros/$ROS_DISTRO/setup.bash
+#source /opt/ros/$ROS_DISTRO/setup.bash
 export ROS_DOMAIN_ID=55
 export RCUTILS_COLORIZED_OUTPUT=1
 export ROS_LOCALHOST_ONLY=1
 cd
-sros
-sws
-source /root/ros_env_vars.sh
+#sros
+#sws
+#source /root/ros_env_vars.sh

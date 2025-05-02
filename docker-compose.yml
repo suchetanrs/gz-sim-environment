@@ -1,7 +1,7 @@
 version: "3"
 services:
-  vehicle_simulator_gz_sim:
-    image: gazebo-vehicle-ros2-gpu-harmonic:humble
+  ros2_kilted_tnt_binary:
+    image: ros2_kilted_tnt_binary
     container_name: vehicle_simulator_gz_sim
     volumes:
       #full dev
@@ -14,19 +14,19 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       #ros-workspaces
       - ./root_dir/:/root/:rw
-      - ./vehicle_packages:/root/ros2_ws/src/vehicle_packages/:rw
-      - ./other_ws:/root/other_ws:rw
-      - ./experimental_ws:/root/experimental_ws:rw
-      - ./ros_env_vars.sh:/root/ros_env_vars.sh:rw
+      #- ./vehicle_packages:/root/ros2_ws/src/vehicle_packages/:rw
+      #- ./other_ws:/root/other_ws:rw
+      #- ./experimental_ws:/root/experimental_ws:rw
+      #- ./ros_env_vars.sh:/root/ros_env_vars.sh:rw
     privileged: true
-    runtime: nvidia
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+    #runtime: nvidia
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices:
+    #        - driver: nvidia
+    #          count: all
+    #          capabilities: [gpu]
     network_mode: host
     ipc: host
     pid: host
