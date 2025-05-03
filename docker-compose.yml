@@ -1,7 +1,7 @@
 version: "3"
 services:
-  ros2_kilted_tnt_binary:
-    image: ros2_kilted_tnt_binary
+  ros2_kilted_tnt_deb:
+    image: ros2_kilted_tnt_deb
     container_name: vehicle_simulator_gz_sim
     volumes:
       #full dev
