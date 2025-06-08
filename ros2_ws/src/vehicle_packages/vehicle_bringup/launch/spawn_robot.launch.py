@@ -83,17 +83,17 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         executable="parameter_bridge",
         name="parameter_bridge" + robot_idx_str,
         arguments=[
-            robot_ns + "cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist",
-            robot_ns + "ground_truth_pose@nav_msgs/msg/Odometry[ignition.msgs.Odometry",
-            robot_ns + "odom_differential@nav_msgs/msg/Odometry[ignition.msgs.Odometry",
-            robot_ns + "imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
-            robot_ns + "joint_states@sensor_msgs/msg/JointState[ignition.msgs.Model",
-            robot_ns + "lidar/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
-            robot_ns + "lidar_vertical/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
-            # robot_ns + "depth_camera/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
-            robot_ns + "lidar_2d/points@sensor_msgs/msg/PointCloud2[ignition.msgs.PointCloudPacked",
-            robot_ns + "camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo", #depth camera info
-            robot_ns + "rgb_camera/camera_info@sensor_msgs/msg/CameraInfo[ignition.msgs.CameraInfo" #rgb camera info
+            robot_ns + "cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist",
+            robot_ns + "ground_truth_pose@nav_msgs/msg/Odometry[gz.msgs.Odometry",
+            robot_ns + "odom_differential@nav_msgs/msg/Odometry[gz.msgs.Odometry",
+            robot_ns + "imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
+            robot_ns + "joint_states@sensor_msgs/msg/JointState[gz.msgs.Model",
+            robot_ns + "lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            robot_ns + "lidar_vertical/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            # robot_ns + "depth_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            robot_ns + "lidar_2d/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            robot_ns + "camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo", #depth camera info
+            robot_ns + "rgb_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" #rgb camera info
         ],
         parameters=[
             {

@@ -1,6 +1,7 @@
 /**:
   twist_mux:
     ros__parameters:
+      use_stamped: false 
       topics:
         navigation:
           topic   : cmd_vel_nav

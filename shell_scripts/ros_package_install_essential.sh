@@ -17,4 +17,3 @@ rosdep update
 apt-get install ros-$ROS_DISTRO-rqt ros-$ROS_DISTRO-rqt-common-plugins -y
 apt-get install ros-$ROS_DISTRO-rviz2 -y
 apt-get install ros-$ROS_DISTRO-robot-localization -y
-sudo apt install ros-$ROS_DISTRO-ros-gzharmonic -y
