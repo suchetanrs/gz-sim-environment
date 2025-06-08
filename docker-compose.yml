@@ -1,7 +1,7 @@
 version: "3"
 services:
   vehicle_simulator_gz_sim:
-    image: gazebo-vehicle-ros2-gpu-ionic:kilted
+    image: gazebo-vehicle-ros2-gpu-ionic:rolling
     container_name: vehicle_simulator_gz_sim
     volumes:
       #full dev

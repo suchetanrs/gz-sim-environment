@@ -1,5 +1,5 @@
 FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04 AS glvnd
-FROM osrf/ros:kilted-desktop-full
+FROM osrf/ros:rolling-desktop-full
 
 #setup
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -41,7 +41,7 @@ RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
     libbenchmark-dev \
     ros-${ROS_DISTRO}-ompl \
     nlohmann-json3-dev \
-    ros-${ROS_DISTRO}-behaviortree-cpp \
+    # ros-${ROS_DISTRO}-behaviortree-cpp \
     lcov \
     python3-zmq \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp

@@ -38,7 +38,7 @@ struct WaveParameters {
     float a;   // amplitude
     float phi; // phase constant of speed
     vec2 d;    // horizontal direction of wave
-	float q;   // steepness for Gerstner wave (q=0: rolling sine waves)
+	float q;   // steepness for Gerstner wave (q=0: rollingsine waves)
 };
 
 void main(void)
