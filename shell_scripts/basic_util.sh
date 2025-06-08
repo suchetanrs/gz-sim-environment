@@ -14,4 +14,4 @@ apt-get install mlocate -y
 apt-get install vim -y
 apt-get install ranger -y
 apt-get install xterm -y
-apt-get install nautilus -y
+# apt-get install nautilus -y

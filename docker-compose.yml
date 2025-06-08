@@ -13,11 +13,17 @@ services:
       - /etc/localtime:/etc/localtime:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       #ros-workspaces
-      - ./root_dir/:/root/:rw
-      - ./vehicle_packages:/root/ros2_ws/src/vehicle_packages/:rw
-      - ./other_ws:/root/other_ws:rw
-      - ./experimental_ws:/root/experimental_ws:rw
+      - ./root_dir/.ros:/root/.ros:rw
+      - ./root_dir/.bash_profile:/root/.bash_profile:rw
+      - ./root_dir/.bashrc:/root/.bashrc:rw
+      - ./root_dir/.rangerdir:/root/.rangerdir:rw
+      - ./root_dir/.tmux.conf:/root/.tmux.conf:rw
+      - ./root_dir/simulation.rviz:/root/simulation.rviz:rw
+      #packages
       - ./ros_env_vars.sh:/root/ros_env_vars.sh:rw
+      - ./launch_simulation.sh:/root/launch_simulation.sh:rw
+      - ./ros2_ws:/root/ros2_ws:rw
+      - ./other_ws:/root/other_ws:rw
     privileged: true
     runtime: nvidia
     deploy:

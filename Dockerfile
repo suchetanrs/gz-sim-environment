@@ -1,5 +1,5 @@
-FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04 as glvnd
-FROM osrf/ros:humble-desktop-full-jammy
+FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04 AS glvnd
+FROM osrf/ros:humble-desktop-full
 
 #setup
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -25,13 +25,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=glvnd /usr/share/glvnd/egl_vendor.d/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
 ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
 ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
-ENV GZ_VERSION harmonic
-# COPY ./root_dir/ros2_ws/ /root/ros2_ws/
-# RUN cd /root/ros2_ws/ && rosdep install --from-paths src --ignore-src -r -y
-RUN apt-get install -y ros-${ROS_DISTRO}-octomap*
+ENV GZ_VERSION=harmonic
 RUN apt-get install -y ros-${ROS_DISTRO}-twist-mux ros-${ROS_DISTRO}-pointcloud-to-laserscan
-RUN apt-get install -y xterm
-RUN apt-get install -y nano vim ranger nautilus x11-apps
+RUN apt-get install -y x11-apps
 
 RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
     ros-${ROS_DISTRO}-bond \
@@ -50,11 +46,5 @@ RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
     python3-zmq \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
 
-# COPY other_ws/src /root/other_ws/src
-# RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y --simulate
-
-# COPY other_ws/src/slam_toolbox /root/other_ws/src/slam_toolbox
-# RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y
-
-# COPY other_ws/src/navigation2 /root/other_ws/src/navigation2
-# RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y
+COPY other_ws/src /root/other_ws/src
+RUN cd /root/other_ws && apt-get update && apt-get update --fix-missing && rosdep install --from-paths src --ignore-src -r -y

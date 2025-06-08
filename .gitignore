@@ -23,3 +23,6 @@ other_ws/log**
 other_ws/**
 experimental_ws/**
 root_dir/ros_env_vars.sh
+ros2_ws/build**
+ros2_ws/install**
+ros2_ws/log**
