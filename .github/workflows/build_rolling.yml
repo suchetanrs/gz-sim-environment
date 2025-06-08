@@ -1,0 +1,25 @@
+name: System build (Rolling)
+
+on:
+  push:
+    branches: [ "rolling" ]
+  pull_request:
+    branches: ["rolling"]
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_TAG: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Update submodules
+      run: git submodule update --init --recursive --remote && git submodule update
+    - name: Build the Docker image
+      run: sudo docker build -t gazebo-vehicle-ros2-gpu-ionic:rolling .
+    # - name: Build packages
+    #   run: sudo docker compose run -i --entrypoint /bin/bash vehicle_simulator_gz_sim -c "cd && source /opt/ros/${ROS_DISTRO}/setup.bash && colcon build && exec bash"
