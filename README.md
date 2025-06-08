@@ -17,10 +17,7 @@ Run ```cd <cloned_repo>```
 
 If you would like to install the dependencies of your custom package to use with the simulation, place your custom package in other_ws and build the docker image using step 5 again.
 
-⚠️⚠️ For some reason, I was not able to get ```--symlink-install``` to work. Whenever you change the launch file, the ```ros2_ws``` needs to be built again using the command ```colcon build```. ⚠️⚠️
-
 # Important information
-The namespace of the robot is currently set to ```robot_0```.
 
 The ```ROS_DOMAIN_ID``` is set to 55 in the ```.bashrc```
 
@@ -28,8 +25,4 @@ There are currently two model types. More will be available soon! (Drones, Legge
 
 You can modify the ```spawn_robot.launch.py``` in the ```vehicle_packages``` to select your desired model.
 
-You can choose from ```model``` and ```model_with_2_lidars```
-
-![MarsYard](media/marsyard.png)
-![Clearpath](media/playpen.png)
-![Inspection](media/inspection.png)
+Edit the `robot_model_type` variable.
