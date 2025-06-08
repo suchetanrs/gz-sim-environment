@@ -4,8 +4,8 @@ Run ```cd <cloned_repo>```
 1. ```echo "xhost +" >> ~/.bashrc && source ~/.bashrc``` you can ignore if done already.
 2. ```sudo chmod +x install-nvidia-container-toolkit.sh```
 3. ```./install-nvidia-container-toolkit.sh```
-4. Pull the latest image ```sudo docker pull osrf/ros:jazzy-desktop-full```
-5. ```sudo docker build -t gazebo-vehicle-ros2-gpu-harmonic:jazzy .```
+4. Pull the latest image ```sudo docker pull osrf/ros:kilted-desktop-full```
+5. ```sudo docker build -t gazebo-vehicle-ros2-gpu-ionic:kilted .```
 6. ```sudo docker compose run vehicle_simulator_gz_sim```
 7. ```sudo chmod +x launch_simulation.sh```
 8. ```./launch_simulation.sh```

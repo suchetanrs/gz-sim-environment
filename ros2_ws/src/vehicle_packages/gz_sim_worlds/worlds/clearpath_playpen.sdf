@@ -4,7 +4,7 @@
     <!-- Model States Publisher -->
 
     <plugin
-      filename="ignition-gazebo-physics-system"
+      filename="gz-sim-physics-system"
       name="gz::sim::systems::Physics">
     </plugin>
     <plugin
@@ -28,11 +28,11 @@
 
     <gui fullscreen='false'>
       <plugin name='3D View' filename='GzScene3D'>
-        <ignition-gui>
+        <gz-gui>
           <title>3D View</title>
           <property type='bool' key='showTitleBar'>false</property>
           <property type='string' key='state'>docked</property>
-        </ignition-gui>
+        </gz-gui>
         <engine>ogre2</engine>
         <scene>scene</scene>
         <ambient_light>0.4 0.4 0.4</ambient_light>
@@ -44,7 +44,7 @@
         </camera_follow>
       </plugin>
       <plugin name='World control' filename='WorldControl'>
-        <ignition-gui>
+        <gz-gui>
           <title>World control</title>
           <property type='bool' key='showTitleBar'>false</property>
           <property type='bool' key='resizable'>false</property>
@@ -56,13 +56,13 @@
             <line own='left' target='left'/>
             <line own='bottom' target='bottom'/>
           </anchors>
-        </ignition-gui>
+        </gz-gui>
         <play_pause>true</play_pause>
         <step>true</step>
         <start_paused>true</start_paused>
       </plugin>
       <plugin name='World stats' filename='WorldStats'>
-        <ignition-gui>
+        <gz-gui>
           <title>World stats</title>
           <property type='bool' key='showTitleBar'>false</property>
           <property type='bool' key='resizable'>false</property>
@@ -74,16 +74,16 @@
             <line own='right' target='right'/>
             <line own='bottom' target='bottom'/>
           </anchors>
-        </ignition-gui>
+        </gz-gui>
         <sim_time>true</sim_time>
         <real_time>true</real_time>
         <real_time_factor>true</real_time_factor>
         <iterations>true</iterations>
       </plugin>
       <plugin name='Teleop' filename='Teleop'>
-        <ignition-gui>
+        <gz-gui>
           <property type='string' key='state'>docked</property>
-        </ignition-gui>
+        </gz-gui>
         <topic>robot_0/cmd_vel_nav</topic>
       </plugin>
       <plugin filename="ImageDisplay" name="Image Display 1">

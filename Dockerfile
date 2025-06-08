@@ -1,5 +1,5 @@
 FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04 AS glvnd
-FROM osrf/ros:jazzy-desktop-full
+FROM osrf/ros:kilted-desktop-full
 
 #setup
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=glvnd /usr/share/glvnd/egl_vendor.d/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
 ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
 ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
-ENV GZ_VERSION=harmonic
+ENV GZ_VERSION=ionic
 RUN apt-get install -y ros-${ROS_DISTRO}-twist-mux ros-${ROS_DISTRO}-pointcloud-to-laserscan
 RUN apt-get install -y x11-apps
 
@@ -41,7 +41,7 @@ RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
     libbenchmark-dev \
     ros-${ROS_DISTRO}-ompl \
     nlohmann-json3-dev \
-    ros-${ROS_DISTRO}-behaviortree-cpp-v3 \
+    ros-${ROS_DISTRO}-behaviortree-cpp \
     lcov \
     python3-zmq \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
