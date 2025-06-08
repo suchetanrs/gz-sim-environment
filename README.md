@@ -1,6 +1,12 @@
 # A dockerised simulation respository for simulating a vehicle on GZ Sim.
 Run ```cd <cloned_repo>```
 
+## Build status
+![Rolling](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_rolling.yml/badge.svg)
+![Kilted](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_kilted.yml/badge.svg)
+![Jazzy](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_jazzy.yml/badge.svg)
+![Humble](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_humble.yml/badge.svg)
+
 1. ```git clone https://github.com/suchetanrs/gz-sim-environment -b jazzy && cd gz-sim-environment```
 2. ```echo "xhost +" >> ~/.bashrc && source ~/.bashrc``` you can ignore if done already.
 3. ```sudo chmod +x install-nvidia-container-toolkit.sh```
