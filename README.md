@@ -1,5 +1,4 @@
 # A dockerised simulation respository for simulating a vehicle on GZ Sim.
-Run ```cd <cloned_repo>```
 
 ## Build status
 ![Rolling](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_rolling.yml/badge.svg)
