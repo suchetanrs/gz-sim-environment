@@ -137,28 +137,29 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
             remappings=[('cmd_vel_out','cmd_vel')]
     )
 
-    pcl_to_laserscan = Node(
-        package='pointcloud_to_laserscan',
-        executable='pointcloud_to_laserscan_node',
-        name='pointcloud_to_laserscan',
-        parameters=[{
-            'target_frame': robot_ns + 'base_link',
-            'min_height': -3.0,
-            'max_height': 3.0,
-            'angle_min': -3.139,  # -90 degrees
-            'angle_max': 3.139,   # 90 degrees
-            'angle_increment': 0.01,
-            'scan_time': 0.1,
-            'range_min': 0.5,
-            'range_max': 10.0,
-            'use_inf': True,
-            "use_sim_time": True
-        }],
-        remappings=[
-            ('cloud_in', robot_ns + "lidar_2d/points"),  # Input point cloud
-            ('scan', robot_ns + "scan")  # Output LaserScan
-        ]
-    )
+    # TODO(suchetan): uncomment when pointcloud_to_laserscan is available on rolling
+    # pcl_to_laserscan = Node(
+    #     package='pointcloud_to_laserscan',
+    #     executable='pointcloud_to_laserscan_node',
+    #     name='pointcloud_to_laserscan',
+    #     parameters=[{
+    #         'target_frame': robot_ns + 'base_link',
+    #         'min_height': -3.0,
+    #         'max_height': 3.0,
+    #         'angle_min': -3.139,  # -90 degrees
+    #         'angle_max': 3.139,   # 90 degrees
+    #         'angle_increment': 0.01,
+    #         'scan_time': 0.1,
+    #         'range_min': 0.5,
+    #         'range_max': 10.0,
+    #         'use_inf': True,
+    #         "use_sim_time": True
+    #     }],
+    #     remappings=[
+    #         ('cloud_in', robot_ns + "lidar_2d/points"),  # Input point cloud
+    #         ('scan', robot_ns + "scan")  # Output LaserScan
+    #     ]
+    # )
 
     # publishes the odom -> base_footprint tf
     publish_gt_odom_tf = Node(
@@ -178,7 +179,8 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         key_teleop_cmd,
         bridge,
         twist_mux_cmd,
-        pcl_to_laserscan,
+        # TODO:suchetan: uncomment when pointcloud_to_laserscan is available on rolling
+        # pcl_to_laserscan,
 #        publish_gt_odom_tf
     ]
 
