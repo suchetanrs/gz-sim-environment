@@ -42,14 +42,14 @@
     </light>
 
     <model name="marsyard">
-      <pose>3.776780 0.180000 0 0 0 0</pose>
+      <pose>5.61 5.94 0 0 0 0</pose>
       <include>
         <uri>model://marsyard2020_terrain_no_rocks</uri>
       </include>
     </model>
 
     <model name='Untitled'>
-      <pose>-9.870000 0.292012 0 0 -0 0</pose>
+      <pose>-8.03 6.05 0 0 -0 0</pose>
       <link name='Wall_30'>
         <collision name='Wall_30_Collision'>
           <geometry>

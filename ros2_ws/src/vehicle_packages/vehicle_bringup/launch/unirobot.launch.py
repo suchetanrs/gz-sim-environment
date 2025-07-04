@@ -9,6 +9,7 @@ from launch.actions import TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from launch.substitutions import LaunchConfiguration, TextSubstitution
 
 
 def generate_launch_description():
@@ -17,13 +18,20 @@ def generate_launch_description():
     pkg_project_gazebo = get_package_share_directory("vehicle_bringup")
     pkg_project_worlds = get_package_share_directory("gz_sim_worlds")
 
+    world_arg = DeclareLaunchArgument(
+        name="world",
+        default_value="marsyard2020_walls.sdf",
+        description="Name of the Gazebo world file (SDF) in gz_sim_worlds/worlds/"
+    )
+    world_file = LaunchConfiguration("world")
+
     # Setup to launch the simulator and Gazebo world
     gz_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, "launch", "gz_sim.launch.py")
         ),
         launch_arguments={"gz_version": "8",
-                          "gz_args": "--headless-rendering -r -s marsyard2020_walls.sdf"}.items(),
+                          "gz_args": ["--headless-rendering ", " -r ", world_file]}.items(),
     )
     # clearpath_playpen.sdf
     # pittsburgh_mine.sdf
@@ -66,6 +74,7 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            world_arg,
             gz_sim,
             topic_bridge,
         ] + spawn_robots
