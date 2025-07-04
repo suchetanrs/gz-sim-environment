@@ -26,7 +26,8 @@ COPY --from=glvnd /usr/share/glvnd/egl_vendor.d/10_nvidia.json /usr/share/glvnd/
 ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
 ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:-all}
 ENV GZ_VERSION=ionic
-RUN apt-get install -y ros-${ROS_DISTRO}-twist-mux ros-${ROS_DISTRO}-pointcloud-to-laserscan
+RUN apt-get install -y ros-${ROS_DISTRO}-twist-mux 
+#ros-${ROS_DISTRO}-pointcloud-to-laserscan TODO(suchetan): this is currently not available on rolling, fix when available
 RUN apt-get install -y x11-apps
 
 RUN apt-get install -y ros-${ROS_DISTRO}-bondcpp \
