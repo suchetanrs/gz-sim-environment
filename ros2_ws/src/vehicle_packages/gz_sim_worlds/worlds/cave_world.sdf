@@ -128,7 +128,7 @@
     <model name='cave_world'>
       <static>1</static>
       <link name='link'>
-        <pose>100 100 0 1.5708 -0 0</pose>
+        <pose>10 0 0 1.5708 -0 0</pose>
         <collision name='collision'>
           <geometry>
             <mesh>
@@ -197,9 +197,9 @@
       <shadows>1</shadows>
     </scene>
     <wind/>
-    <!-- <model name='unit_box'>
+    <model name='unit_box'>
       <static>1</static>
-      <pose>-2.980000 0.520000 1.250000 0 -0 0</pose>
+      <pose>6.52 0.520000 1.250000 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -216,7 +216,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>1 6.4611 2.50328</size>
+              <size>1 7.6611 2.50328</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -236,7 +236,7 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>1 6.4611 2.50328</size>
+              <size>1 7.6611 2.50328</size>
             </box>
           </geometry>
           <material>
@@ -251,7 +251,7 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    <model name='unit_box_clone'>
+    <!-- <model name='unit_box_clone'>
       <static>1</static>
       <pose>-42.80 22.08 1.25 0 -2e-06 -0.000143</pose>
       <link name='link'>

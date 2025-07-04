@@ -20,6 +20,8 @@
 12. The GUI is disabled by default.
 13. You should be able to teleop the robot through the teleop window.
 14. You can run the default simulation RViz from the bottom-right terminal. As long as you are able to see the lidar pointcloud, the rgb and depth images on RViz, you can safely ignore the texture error messages on the simulation terminal window.
+15. If you wish to launch cave world, you can do run the following in the top right terminal: `ros2 launch vehicle_bringup unirobot.launch.py world:=cave_world.sdf`
+16. If you wish to launch the corridor world, you can do run the following in the top right terminal: `ros2 launch vehicle_bringup unirobot.launch.py world:=indoor.sdf`
 
 If you would like to install the dependencies of your custom package to use with the simulation, place your custom package in other_ws and build the docker image using step 5 again.
 
