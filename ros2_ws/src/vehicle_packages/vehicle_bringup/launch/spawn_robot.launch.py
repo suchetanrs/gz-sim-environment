@@ -9,11 +9,11 @@ import xacro
 import subprocess
 
 robot_coordinates = {
-    0: [-3.22, -5.62, 1.65], # playpen featureless
+    # 0: [-3.22, -5.62, 1.65], # playpen featureless
     # 0: [-1.0, -1.0, 1.65], 
     # 0: [-5.0, 0.0, 2.5], # cave world
     # 0: [-15.0, -15.0, 2.5], # marsyard
-    # 0: [0.0, 0.0, 2.5], # corridor
+    0: [0.0, 0.0, 1.0], # corridor
     1: [0.0, 5.0, 1.65],
     2: [5.0, 5.0, 1.65],
     3: [-1.0, 8.0, 1.65],
