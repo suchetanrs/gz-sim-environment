@@ -1,10 +1,10 @@
 # A dockerised simulation respository for simulating a vehicle on GZ Sim.
 
 ## Build status
-![Rolling](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_rolling.yml/badge.svg)
-![Kilted](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_kilted.yml/badge.svg)
-![Jazzy](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_jazzy.yml/badge.svg)
-![Humble](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_humble.yml/badge.svg)
+![Rolling](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_rolling.yml/badge.svg?branch=rolling)
+![Kilted](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_kilted.yml/badge.svg?branch=kilted)
+![Jazzy](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_jazzy.yml/badge.svg?branch=jazzy)
+![Humble](https://github.com/suchetanrs/gz-sim-environment/actions/workflows/build_humble.yml/badge.svg?branch=humble)
 
 1. Run ```git clone https://github.com/suchetanrs/gz-sim-environment -b rolling && cd gz-sim-environment```
 2. ```echo "xhost +" >> ~/.bashrc && source ~/.bashrc``` you can ignore if done already.
