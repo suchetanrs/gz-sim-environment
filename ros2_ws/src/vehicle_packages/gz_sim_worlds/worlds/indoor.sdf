@@ -153,7 +153,7 @@
     </light>
 
     <model name="indoor">
-      <pose frame=''>50 0 0 0 0 0</pose>
+      <pose frame=''>0 0 0 0 0 0</pose>
       <include>
         <uri>model://sun</uri>
       </include>
