@@ -10,6 +10,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration, TextSubstitution
+from launch.conditions import IfCondition, UnlessCondition
 
 
 def generate_launch_description():
@@ -26,12 +27,40 @@ def generate_launch_description():
     world_file = LaunchConfiguration("world")
 
     # Setup to launch the simulator and Gazebo world
-    gz_sim = IncludeLaunchDescription(
+    headless_arg = DeclareLaunchArgument(
+        name="headless",
+        default_value="true",
+        description="Run Gazebo in headless (no GUI) mode"
+    )
+    headless = LaunchConfiguration("headless")
+
+    base_launch_args = {
+        "gz_version": "8",
+        "gz_args": ["--headless-rendering -r ", world_file],
+    }
+
+    # extend for headless
+    headless_launch_args = {
+        **base_launch_args,
+        "gz_args": [" -s ", *base_launch_args["gz_args"]],
+    }
+    
+    gui_launch_args = base_launch_args
+
+    gz_sim_headless = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, "launch", "gz_sim.launch.py")
         ),
-        launch_arguments={"gz_version": "8",
-                          "gz_args": ["--headless-rendering ", " -r ", world_file]}.items(),
+        launch_arguments=headless_launch_args.items(),
+        condition=IfCondition(headless),
+    )
+    
+    gz_sim_gui = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_ros_gz_sim, "launch", "gz_sim.launch.py")
+        ),
+        launch_arguments=gui_launch_args.items(),
+        condition=UnlessCondition(headless),
     )
     # clearpath_playpen.sdf
     # pittsburgh_mine.sdf
@@ -75,7 +104,9 @@ def generate_launch_description():
     return LaunchDescription(
         [
             world_arg,
-            gz_sim,
+            headless_arg,
+            gz_sim_gui,
+            gz_sim_headless,
             topic_bridge,
         ] + spawn_robots
     )
