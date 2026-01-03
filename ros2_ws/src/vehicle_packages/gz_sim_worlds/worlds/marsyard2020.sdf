@@ -27,8 +27,8 @@
       name="ignition::gazebo::systems::UserCommands">
     </plugin>
     <plugin
-        filename="gz-sim-imu-system"
-        name="gz::sim::systems::Imu">
+        filename="ignition-gazebo-imu-system"
+        name="ignition::gazebo::systems::Imu">
     </plugin>
 
     <light name="sun" type="directional">
