@@ -1,0 +1,450 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+<%
+  robot_name = robot_name
+  robot_name_with_slash = robot_name_with_slash
+  robot_x = robot_x
+  robot_y = robot_y
+%>
+    <model name='x3'>
+        <link name='<%= robot_name_with_slash.to_s %>base_footprint'>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>1e-6</mass>
+            <inertia>
+                <ixx>1e-9</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1e-9</iyy>
+                <iyz>0</iyz>
+                <izz>1e-9</izz>
+            </inertia>
+        </inertial>
+        </link>
+        <link name='<%= robot_name_with_slash.to_s %>base_link'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+            <pose>0 0 0 0 -0 0</pose>
+            <mass>1.5</mass>
+            <inertia>
+            <ixx>0.0347563</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.07</iyy>
+            <iyz>0</iyz>
+            <izz>0.0977</izz>
+            </inertia>
+        </inertial>
+        <collision name='<%= robot_name_with_slash.to_s %>base_link_inertia_collision'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <box>
+                <size>0.47 0.47 0.11</size>
+            </box>
+            </geometry>
+        </collision>
+        <visual name='<%= robot_name_with_slash.to_s %>base_link_inertia_visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://x3/meshes/x3.dae</uri>
+            </mesh>
+            </geometry>
+        </visual>
+        </link>
+        <joint name='<%= robot_name_with_slash.to_s %>base_link_joint' type='fixed'>
+        <child><%= robot_name_with_slash.to_s %>base_link</child>
+        <parent><%= robot_name_with_slash.to_s %>base_footprint</parent>
+        <pose>0 0 0 0 0 0</pose>
+        </joint>
+        <link name='<%= robot_name_with_slash.to_s %>rotor_0'>
+        <pose>0.13 -0.22 0.023 0 -0 0</pose>
+        <inertial>
+            <pose>0 0 0 0 -0 0</pose>
+            <mass>0.005</mass>
+            <inertia>
+            <ixx>9.75e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4.17041e-05</iyy>
+            <iyz>0</iyz>
+            <izz>4.26041e-05</izz>
+            </inertia>
+        </inertial>
+        <collision name='<%= robot_name_with_slash.to_s %>rotor_0_collision'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <cylinder>
+                <length>0.005</length>
+                <radius>0.1</radius>
+            </cylinder>
+            </geometry>
+            <surface>
+            <contact>
+                <ode/>
+            </contact>
+            <friction>
+                <ode/>
+            </friction>
+            </surface>
+        </collision>
+        <visual name='<%= robot_name_with_slash.to_s %>rotor_0_visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <mesh>
+                <scale>0.1 0.1 0.1</scale>
+                <uri>model://x3/meshes/propeller_ccw.dae</uri>
+            </mesh>
+            </geometry>
+            <material>
+            <script>
+                <name>Gazebo/Blue</name>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        </link>
+        <joint name='<%= robot_name_with_slash.to_s %>rotor_0_joint' type='revolute'>
+        <child><%= robot_name_with_slash.to_s %>rotor_0</child>
+        <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+            </limit>
+            <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+        </axis>
+        </joint>
+        <link name='<%= robot_name_with_slash.to_s %>rotor_1'>
+        <pose>-0.13 0.2 0.023 0 -0 0</pose>
+        <inertial>
+            <pose>0 0 0 0 -0 0</pose>
+            <mass>0.005</mass>
+            <inertia>
+            <ixx>9.75e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4.17041e-05</iyy>
+            <iyz>0</iyz>
+            <izz>4.26041e-05</izz>
+            </inertia>
+        </inertial>
+        <collision name='<%= robot_name_with_slash.to_s %>rotor_1_collision'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <cylinder>
+                <length>0.005</length>
+                <radius>0.1</radius>
+            </cylinder>
+            </geometry>
+            <surface>
+            <contact>
+                <ode/>
+            </contact>
+            <friction>
+                <ode/>
+            </friction>
+            </surface>
+        </collision>
+        <visual name='<%= robot_name_with_slash.to_s %>rotor_1_visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <mesh>
+                <scale>0.1 0.1 0.1</scale>
+                <uri>model://x3/meshes/propeller_ccw.dae</uri>
+            </mesh>
+            </geometry>
+            <material>
+            <script>
+                <name>Gazebo/Red</name>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        </link>
+        <joint name='<%= robot_name_with_slash.to_s %>rotor_1_joint' type='revolute'>
+        <child><%= robot_name_with_slash.to_s %>rotor_1</child>
+        <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+            </limit>
+            <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+        </axis>
+        </joint>
+        <link name='<%= robot_name_with_slash.to_s %>rotor_2'>
+        <pose>0.13 0.22 0.023 0 -0 0</pose>
+        <inertial>
+            <pose>0 0 0 0 -0 0</pose>
+            <mass>0.005</mass>
+            <inertia>
+            <ixx>9.75e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4.17041e-05</iyy>
+            <iyz>0</iyz>
+            <izz>4.26041e-05</izz>
+            </inertia>
+        </inertial>
+        <collision name='<%= robot_name_with_slash.to_s %>rotor_2_collision'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <cylinder>
+                <length>0.005</length>
+                <radius>0.1</radius>
+            </cylinder>
+            </geometry>
+            <surface>
+            <contact>
+                <ode/>
+            </contact>
+            <friction>
+                <ode/>
+            </friction>
+            </surface>
+        </collision>
+        <visual name='<%= robot_name_with_slash.to_s %>rotor_2_visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <mesh>
+                <scale>0.1 0.1 0.1</scale>
+                <uri>model://x3/meshes/propeller_cw.dae</uri>
+            </mesh>
+            </geometry>
+            <material>
+            <script>
+                <name>Gazebo/Blue</name>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        </link>
+        <joint name='<%= robot_name_with_slash.to_s %>rotor_2_joint' type='revolute'>
+        <child><%= robot_name_with_slash.to_s %>rotor_2</child>
+        <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+            </limit>
+            <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+        </axis>
+        </joint>
+        <link name='<%= robot_name_with_slash.to_s %>rotor_3'>
+        <pose>-0.13 -0.2 0.023 0 -0 0</pose>
+        <inertial>
+            <pose>0 0 0 0 -0 0</pose>
+            <mass>0.005</mass>
+            <inertia>
+            <ixx>9.75e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4.17041e-05</iyy>
+            <iyz>0</iyz>
+            <izz>4.26041e-05</izz>
+            </inertia>
+        </inertial>
+        <collision name='<%= robot_name_with_slash.to_s %>rotor_3_collision'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <cylinder>
+                <length>0.005</length>
+                <radius>0.1</radius>
+            </cylinder>
+            </geometry>
+            <surface>
+            <contact>
+                <ode/>
+            </contact>
+            <friction>
+                <ode/>
+            </friction>
+            </surface>
+        </collision>
+        <visual name='<%= robot_name_with_slash.to_s %>rotor_3_visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+            <mesh>
+                <scale>0.1 0.1 0.1</scale>
+                <uri>model://x3/meshes/propeller_cw.dae</uri>
+            </mesh>
+            </geometry>
+            <material>
+            <script>
+                <name>Gazebo/Red</name>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        </link>
+        <joint name='<%= robot_name_with_slash.to_s %>rotor_3_joint' type='revolute'>
+        <child><%= robot_name_with_slash.to_s %>rotor_3</child>
+        <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+            </limit>
+            <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+        </axis>
+        </joint>
+        <plugin
+            filename="gz-sim-multicopter-motor-model-system"
+            name="gz::sim::systems::MulticopterMotorModel">
+            <robotNamespace><%= robot_name.to_s %></robotNamespace>
+            <jointName><%= robot_name_with_slash.to_s %>rotor_0_joint</jointName>
+            <linkName><%= robot_name_with_slash.to_s %>rotor_0</linkName>
+            <turningDirection>ccw</turningDirection>
+            <timeConstantUp>0.0125</timeConstantUp>
+            <timeConstantDown>0.025</timeConstantDown>
+            <maxRotVelocity>800.0</maxRotVelocity>
+            <motorConstant>8.54858e-06</motorConstant>
+            <momentConstant>0.016</momentConstant>
+            <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+            <actuator_number>0</actuator_number>
+            <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+            <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+            <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
+            <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+            <motorType>velocity</motorType>
+        </plugin>
+        <plugin
+            filename="gz-sim-multicopter-motor-model-system"
+            name="gz::sim::systems::MulticopterMotorModel">
+            <robotNamespace><%= robot_name.to_s %></robotNamespace>
+            <jointName><%= robot_name_with_slash.to_s %>rotor_1_joint</jointName>
+            <linkName><%= robot_name_with_slash.to_s %>rotor_1</linkName>
+            <turningDirection>ccw</turningDirection>
+            <timeConstantUp>0.0125</timeConstantUp>
+            <timeConstantDown>0.025</timeConstantDown>
+            <maxRotVelocity>800.0</maxRotVelocity>
+            <motorConstant>8.54858e-06</motorConstant>
+            <momentConstant>0.016</momentConstant>
+            <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+            <actuator_number>1</actuator_number>
+            <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+            <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+            <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
+            <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+            <motorType>velocity</motorType>
+        </plugin>
+        <plugin
+            filename="gz-sim-multicopter-motor-model-system"
+            name="gz::sim::systems::MulticopterMotorModel">
+            <robotNamespace><%= robot_name.to_s %></robotNamespace>
+            <jointName><%= robot_name_with_slash.to_s %>rotor_2_joint</jointName>
+            <linkName><%= robot_name_with_slash.to_s %>rotor_2</linkName>
+            <turningDirection>cw</turningDirection>
+            <timeConstantUp>0.0125</timeConstantUp>
+            <timeConstantDown>0.025</timeConstantDown>
+            <maxRotVelocity>800.0</maxRotVelocity>
+            <motorConstant>8.54858e-06</motorConstant>
+            <momentConstant>0.016</momentConstant>
+            <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+            <actuator_number>2</actuator_number>
+            <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+            <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+            <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
+            <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+            <motorType>velocity</motorType>
+        </plugin>
+        <plugin
+            filename="gz-sim-multicopter-motor-model-system"
+            name="gz::sim::systems::MulticopterMotorModel">
+            <robotNamespace><%= robot_name.to_s %></robotNamespace>
+            <jointName><%= robot_name_with_slash.to_s %>rotor_3_joint</jointName>
+            <linkName><%= robot_name_with_slash.to_s %>rotor_3</linkName>
+            <turningDirection>cw</turningDirection>
+            <timeConstantUp>0.0125</timeConstantUp>
+            <timeConstantDown>0.025</timeConstantDown>
+            <maxRotVelocity>800.0</maxRotVelocity>
+            <motorConstant>8.54858e-06</motorConstant>
+            <momentConstant>0.016</momentConstant>
+            <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+            <actuator_number>3</actuator_number>
+            <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+            <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+            <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
+            <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+            <motorType>velocity</motorType>
+        </plugin>
+        <plugin
+            filename="gz-sim-multicopter-control-system"
+            name="gz::sim::systems::MulticopterVelocityControl">
+            <robotNamespace><%= robot_name_with_slash.to_s %>X3</robotNamespace>
+            <commandSubTopic>cmd_vel</commandSubTopic>
+            <enableSubTopic>enable</enableSubTopic>
+            <comLinkName><%= robot_name_with_slash.to_s %>base_link</comLinkName>
+            <velocityGain>2.7 2.7 2.7</velocityGain>
+            <attitudeGain>2 3 0.15</attitudeGain>
+            <angularRateGain>0.4 0.52 0.18</angularRateGain>
+            <maximumLinearAcceleration>2 2 2</maximumLinearAcceleration>
+
+            <rotorConfiguration>
+                <rotor>
+                <jointName><%= robot_name_with_slash.to_s %>rotor_0_joint</jointName>
+                <forceConstant>8.54858e-06</forceConstant>
+                <momentConstant>0.016</momentConstant>
+                <direction>1</direction>
+                </rotor>
+                <rotor>
+                <jointName><%= robot_name_with_slash.to_s %>rotor_1_joint</jointName>
+                <forceConstant>8.54858e-06</forceConstant>
+                <momentConstant>0.016</momentConstant>
+                <direction>1</direction>
+                </rotor>
+                <rotor>
+                <jointName><%= robot_name_with_slash.to_s %>rotor_2_joint</jointName>
+                <forceConstant>8.54858e-06</forceConstant>
+                <momentConstant>0.016</momentConstant>
+                <direction>-1</direction>
+                </rotor>
+                <rotor>
+                <jointName><%= robot_name_with_slash.to_s %>rotor_3_joint</jointName>
+                <forceConstant>8.54858e-06</forceConstant>
+                <momentConstant>0.016</momentConstant>
+                <direction>-1</direction>
+                </rotor>
+            </rotorConfiguration>
+        </plugin>
+        <plugin
+            filename="gz-sim-odometry-publisher-system"
+            name="gz::sim::systems::OdometryPublisher">
+            <odom_frame><%= robot_name_with_slash.to_s %>odom</odom_frame>
+            <robot_base_frame><%= robot_name_with_slash.to_s %>base_link</robot_base_frame>
+            <odom_publish_frequency>200</odom_publish_frequency>
+            <odom_topic><%= robot_name_with_slash.to_s %>ground_truth_pose</odom_topic>
+            <!-- <xyz_offset><%= robot_x.to_s %> <%= robot_y.to_s %></xyz_offset> -->
+            <dimensions>3</dimensions>
+        </plugin>
+    </model>
+<%
+%>
+</sdf>

@@ -95,8 +95,8 @@ def generate_launch_description():
             PythonLaunchDescriptionSource(
                 os.path.join(pkg_project_gazebo, "launch", "vehicle_gz.launch.py")
             ),
-            # launch_arguments={"robot_ns": f"robot_{i}/"}.items(),
-            launch_arguments={"robot_ns": ""}.items(),
+            # launch_arguments={"robot_ns": f"robot_{i}"}.items(),
+            launch_arguments={"robot_ns": f""}.items(),
         )
         for i in range(0, 1)
     ]

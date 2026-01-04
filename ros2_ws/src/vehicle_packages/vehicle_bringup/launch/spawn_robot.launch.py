@@ -21,9 +21,14 @@ robot_coordinates = {
     5: [7.0, 8.0, 1.65]
 }
 
+robot_model_category = "4_wheel_differential"
 robot_model_type = "small_vehicle"
 # you can choose from:
 # model, model_with_2_lidar, small_vehicle, small_vehicle_vert_lidar, small_vehicle_2d_lidar
+
+
+# robot_model_category = "drones"
+# robot_model_type = "quadcopter"
 
 def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     pkg_project_description = get_package_share_directory("vehicle_bringup")
@@ -31,12 +36,12 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     if(robot_ns == ""):
         robot_idx_str = "0"
     else:
-        robot_idx_str = robot_ns[-2]
+        robot_idx_str = robot_ns[-1]
     robot_idx = int(robot_idx_str)
     print(f"IDX of the robot: {robot_idx}")
 
-    erb_file = os.path.join(pkg_project_description, 'models', '4_wheel_differential', robot_model_type + '.erb')
-    rb_file = os.path.join(pkg_project_description, 'models', '4_wheel_differential', 'model.rb')
+    erb_file = os.path.join(pkg_project_description, 'models', robot_model_category, robot_model_type + '.erb')
+    rb_file = os.path.join(pkg_project_description, 'models', 'model.rb')
     print(f"ruby {rb_file} \"{robot_ns}\" {erb_file} /tmp/model_{robot_idx_str}.sdf {robot_coordinates[robot_idx][0]} {robot_coordinates[robot_idx][1]}")
     process = subprocess.run(f"ruby {rb_file} \"{robot_ns}\" {erb_file} /tmp/model_{robot_idx_str}.sdf {robot_coordinates[robot_idx][0]} {robot_coordinates[robot_idx][1]}", shell=True, check=True)
     
@@ -77,23 +82,30 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         ],
     )
 
+    if robot_model_category == "drones":
+        cmd_vel_bridge_topic = robot_ns + "/X3/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist"
+    elif robot_model_category == "4_wheel_differential":
+        cmd_vel_bridge_topic = robot_ns + "/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist"
+    else:
+        RuntimeError("Unknown robot model category")
+
     # Bridge ROS topics and Gazebo messages for establishing communication
     topic_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
         name="parameter_bridge" + robot_idx_str,
         arguments=[
-            robot_ns + "cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist",
-            robot_ns + "ground_truth_pose@nav_msgs/msg/Odometry[gz.msgs.Odometry",
-            robot_ns + "odom_differential@nav_msgs/msg/Odometry[gz.msgs.Odometry",
-            robot_ns + "imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
-            robot_ns + "joint_states@sensor_msgs/msg/JointState[gz.msgs.Model",
-            robot_ns + "lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
-            robot_ns + "lidar_vertical/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
-            # robot_ns + "depth_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
-            robot_ns + "lidar_2d/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
-            robot_ns + "camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo", #depth camera info
-            robot_ns + "rgb_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" #rgb camera info
+            cmd_vel_bridge_topic,
+            robot_ns + "/ground_truth_pose@nav_msgs/msg/Odometry[gz.msgs.Odometry",
+            robot_ns + "/odom_differential@nav_msgs/msg/Odometry[gz.msgs.Odometry",
+            robot_ns + "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
+            robot_ns + "/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model",
+            robot_ns + "/lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            robot_ns + "/lidar_vertical/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            # robot_ns + "/depth_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            robot_ns + "/lidar_2d/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
+            robot_ns + "/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo", #depth camera info
+            robot_ns + "/rgb_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" #rgb camera info
         ],
         parameters=[
             {
@@ -108,7 +120,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         package="ros_gz_image",
         executable="image_bridge",
         name="image_bridge" + robot_idx_str,
-        arguments=[robot_ns + 'rgb_camera'],
+        arguments=[robot_ns + '/rgb_camera'],
         output="screen"
     )
 
@@ -116,7 +128,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         package='ros_gz_image',
         executable='image_bridge',
         name="image_bridge" + robot_idx_str,
-        arguments=[robot_ns + 'depth_camera'],
+        arguments=[robot_ns + '/depth_camera'],
         output='screen'
     )
 
@@ -129,13 +141,28 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
         remappings=[('cmd_vel', 'cmd_vel_teleop')],
     )
 
-    twist_mux_cmd = Node(
-            package="twist_mux",
-            executable="twist_mux",
-            namespace=robot_ns,
-            parameters=[twist_mux_param_file],
-            remappings=[('cmd_vel_out','cmd_vel')]
+    twist_mux_cmd_car = Node(
+        package="twist_mux",
+        executable="twist_mux",
+        namespace=robot_ns,
+        parameters=[twist_mux_param_file],
+        remappings=[('cmd_vel_out','cmd_vel')]
     )
+    
+    twist_mux_cmd_drone = Node(
+        package="twist_mux",
+        executable="twist_mux",
+        namespace=robot_ns,
+        parameters=[twist_mux_param_file],
+        remappings=[('cmd_vel_out','X3/cmd_vel')]
+    )
+    
+    if robot_model_category == "4_wheel_differential":
+        twist_mux_cmd = twist_mux_cmd_car
+    elif robot_model_category == "drones":
+        twist_mux_cmd = twist_mux_cmd_drone
+    else:
+        RuntimeError("Unknown robot model category")
 
     # TODO(suchetan): uncomment when pointcloud_to_laserscan is available on rolling
     # pcl_to_laserscan = Node(
@@ -143,7 +170,7 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     #     executable='pointcloud_to_laserscan_node',
     #     name='pointcloud_to_laserscan',
     #     parameters=[{
-    #         'target_frame': robot_ns + 'base_link',
+    #         'target_frame': robot_ns + '/base_link',
     #         'min_height': -3.0,
     #         'max_height': 3.0,
     #         'angle_min': -3.139,  # -90 degrees
@@ -156,8 +183,8 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     #         "use_sim_time": True
     #     }],
     #     remappings=[
-    #         ('cloud_in', robot_ns + "lidar_2d/points"),  # Input point cloud
-    #         ('scan', robot_ns + "scan")  # Output LaserScan
+    #         ('cloud_in', robot_ns + "/lidar_2d/points"),  # Input point cloud
+    #         ('scan', robot_ns + "/scan")  # Output LaserScan
     #     ]
     # )
 
