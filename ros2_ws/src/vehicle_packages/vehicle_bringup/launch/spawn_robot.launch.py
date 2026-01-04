@@ -21,14 +21,14 @@ robot_coordinates = {
     5: [7.0, 8.0, 1.65]
 }
 
-robot_model_category = "4_wheel_differential"
-robot_model_type = "small_vehicle"
+# robot_model_category = "4_wheel_differential"
+# robot_model_type = "small_vehicle"
 # you can choose from:
 # model, model_with_2_lidar, small_vehicle, small_vehicle_vert_lidar, small_vehicle_2d_lidar
 
 
-# robot_model_category = "drones"
-# robot_model_type = "quadcopter"
+robot_model_category = "drones"
+robot_model_type = "quadcopter"
 
 def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
     pkg_project_description = get_package_share_directory("vehicle_bringup")
@@ -81,6 +81,12 @@ def spawn_robot(context: LaunchContext, namespace: LaunchConfiguration):
             {"robot_description": robot_desc},
         ],
     )
+
+    # Important note:
+    # For drones, the cmd_vel topic is namespaced under /X3/cmd_vel
+    # For 4_wheel_differential robots, it is simply /cmd_vel
+    # This is because the MultiVelocityController plugin for drones does not support blank namespace. We are forced to use a non-empty namespace.
+    # For this project, X3 is chosen.
 
     if robot_model_category == "drones":
         cmd_vel_bridge_topic = robot_ns + "/X3/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist"

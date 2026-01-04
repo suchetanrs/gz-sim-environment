@@ -59,6 +59,144 @@
         <parent><%= robot_name_with_slash.to_s %>base_footprint</parent>
         <pose>0 0 0 0 0 0</pose>
         </joint>
+
+        <link name="<%= robot_name_with_slash.to_s %>camera_link">
+            <pose>0.70 0 0.45 0 0 0</pose>
+            <inertial>
+                <pose>0 0 0 0 0 0</pose>
+                <mass>1e-9</mass>
+                <inertia>
+                    <ixx>1e-9</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>1e-9</iyy>
+                    <iyz>0</iyz>
+                    <izz>1e-9</izz>
+                </inertia>
+            </inertial>
+            <sensor name="<%= robot_name_with_slash.to_s %>IMX214" type="camera">
+            <pose>0.01233 -0.03 .01878 0 0 0</pose>
+            <camera>
+                <horizontal_fov>1.274</horizontal_fov>
+                <image>
+                <width>640</width>
+                <height>480</height>
+                </image>
+                <clip>
+                <near>0.01</near>
+                <far>19.1</far>
+                </clip>
+                <camera_info_topic><%= robot_name_with_slash.to_s %>rgb_camera/camera_info</camera_info_topic>
+                <optical_frame_id><%= robot_name_with_slash.to_s %>camera_link_optical</optical_frame_id>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>false</visualize>
+            <topic><%= robot_name_with_slash.to_s %>rgb_camera</topic>
+            <gz_frame_id><%= robot_name_with_slash.to_s %>camera_link</gz_frame_id>
+            </sensor>
+            <sensor name="<%= robot_name_with_slash.to_s %>StereoOV7251" type="depth_camera">
+            <pose>0.01233 -0.03 .01878 0 0 0</pose>
+            <camera>
+                <horizontal_fov>1.274</horizontal_fov>
+                <image>
+                <width>640</width>
+                <height>480</height>
+                <format>R_FLOAT32</format>
+                </image>
+                <clip>
+                <near>0.01</near>
+                <far>6.1</far>
+                </clip>
+                <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.100</stddev>
+                </noise>
+                <optical_frame_id><%= robot_name_with_slash.to_s %>camera_link_optical</optical_frame_id>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>false</visualize>
+            <topic><%= robot_name_with_slash.to_s %>depth_camera</topic>
+            <gz_frame_id><%= robot_name_with_slash.to_s %>camera_link</gz_frame_id>
+            </sensor>
+        </link>
+
+        <link name="<%= robot_name_with_slash.to_s %>camera_link_optical">
+            <pose>0.30 0 0.45 -1.5708 0 -1.5708</pose>
+            <inertial>
+                <pose>0 0 0 0 0 0</pose>
+                <mass>1e-9</mass>
+                <inertia>
+                    <ixx>1e-9</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>1e-9</iyy>
+                    <iyz>0</iyz>
+                    <izz>1e-9</izz>
+                </inertia>
+            </inertial>
+        </link>
+
+        <link name="<%= robot_name_with_slash.to_s %>camera_link_stand">
+            <pose>0.45 0 0.05 0 0 0</pose>
+            <inertial>
+                <pose>0 0 0 0 0 0</pose>
+                <mass>1e-9</mass>
+                <inertia>
+                    <ixx>1e-9</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>1e-9</iyy>
+                    <iyz>0</iyz>
+                    <izz>1e-9</izz>
+                </inertia>
+            </inertial>
+        </link>
+
+        <link name="<%= robot_name_with_slash.to_s %>imu_link">
+            <pose>0 0 0 0 -0 0</pose>
+            <inertial>
+                <pose>0 0 0 0 0 0</pose>
+                <mass>1e-6</mass>
+                <inertia>
+                    <ixx>1e-9</ixx>
+                    <ixy>0</ixy>
+                    <ixz>0</ixz>
+                    <iyy>1e-9</iyy>
+                    <iyz>0</iyz>
+                    <izz>1e-9</izz>
+                </inertia>
+            </inertial>
+            <sensor name="<%= robot_name_with_slash.to_s %>imu_sensor" type="imu">
+                <always_on>1</always_on>
+                <update_rate>50</update_rate>
+                <visualize>false</visualize>
+                <topic><%= robot_name_with_slash.to_s %>imu</topic>
+            </sensor>
+        </link>
+
+        <joint name='<%= robot_name_with_slash.to_s %>camera_joint' type='fixed'>
+            <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+            <child><%= robot_name_with_slash.to_s %>camera_link</child>
+        </joint>
+
+        <joint name='<%= robot_name_with_slash.to_s %>camera_stand_joint' type='fixed'>
+            <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+            <child><%= robot_name_with_slash.to_s %>camera_link_stand</child>
+        </joint>
+
+        <joint name='<%= robot_name_with_slash.to_s %>camera_link_optical_joint' type='fixed'>
+            <parent><%= robot_name_with_slash.to_s %>camera_link</parent>
+            <child><%= robot_name_with_slash.to_s %>camera_link_optical</child>
+        </joint>
+
+        <joint name='<%= robot_name_with_slash.to_s %>imu_joint' type='fixed'>
+            <parent><%= robot_name_with_slash.to_s %>base_link</parent>
+            <child><%= robot_name_with_slash.to_s %>imu_link</child>
+        </joint>
+
         <link name='<%= robot_name_with_slash.to_s %>rotor_0'>
         <pose>0.13 -0.22 0.023 0 -0 0</pose>
         <inertial>
