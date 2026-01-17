@@ -156,7 +156,7 @@
         </link>
 
         <link name="<%= robot_name_with_slash.to_s %>imu_link">
-            <pose>0 0 0 0 -0 0</pose>
+            <pose>0.70 0 0.45 0 0 0</pose>
             <inertial>
                 <pose>0 0 0 0 0 0</pose>
                 <mass>1e-6</mass>
@@ -171,7 +171,7 @@
             </inertial>
             <sensor name="<%= robot_name_with_slash.to_s %>imu_sensor" type="imu">
                 <always_on>1</always_on>
-                <update_rate>50</update_rate>
+                <update_rate>200</update_rate>
                 <visualize>false</visualize>
                 <topic><%= robot_name_with_slash.to_s %>imu</topic>
             </sensor>
