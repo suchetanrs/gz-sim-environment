@@ -12,7 +12,7 @@ tmux select-pane -t 1
 # tmux select-pane -t 2
 # tmux split-window -v
 
-tmux send-keys -t 0 "cd && source ros2_ws/install/setup.bash && ros2 launch vehicle_bringup unirobot.launch.py "
+tmux send-keys -t 0 "cd && source ros2_ws/install/setup.bash && ros2 launch vehicle_bringup unirobot.launch.py headless:=false"
 tmux send-keys -t 1 "cd && source ros2_ws/install/setup.bash && ros2 launch vehicle_bringup octomap.launch.xml"
 tmux send-keys -t 2 "cd && cd ros2_ws && colcon build --symlink-install" C-m
 tmux send-keys -t 3 "cd && rviz2 -d simulation.rviz"
